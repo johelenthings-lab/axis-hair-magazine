@@ -8,6 +8,7 @@ import trendImg from "../assets/images/april/april-03-trend-layers.png";
 import culturalImg from "../assets/images/april/april-04-cultural-spotlight.png";
 import chairImg from "../assets/images/april/april-05-the-chair.png";
 import techImg from "../assets/images/april/april-06-technology-consultation-shift.png";
+import financialsImg from "../assets/images/april/april-06-financials.png";
 import featureImg from "../assets/images/april/april-07-feature-segment.png";
 import directionImg from "../assets/images/april/april-08-the-direction.png";
 import issue01 from "../assets/images/issue-01.png";
@@ -31,12 +32,21 @@ const IssueTemplate: React.FC = () => {
       id: 'founders-note',
       number: '02',
       title: 'FOUNDER’S NOTE',
-      subtitle: 'A Vision for AXIS',
+      subtitle: 'A Word from the Founder',
       content: [
-        'AXIS HAIR was born from a singular belief: that the tools we use should be as beautiful and precise as the art we create. Our mission has always been to bridge the gap between technical mastery and creative intuition.',
-        'In this issue, we dive deeper into that philosophy, exploring how architectural form and digital consultation are coming together to create a new standard of excellence.'
+        'The goal for AXIS HAIR is simple.',
+        'To become a central point for the appointments, growth, and direction of the hair industry—built on your work, your decisions, and your standard.',
+        'You are the artist.',
+        'Every client who sits in your chair is the canvas. And what you create does not only represent them.',
+        'It represents you. Your eye. Your discipline. Your level of control.',
+        'Understand what you do. Because the work being done behind the chair is no longer just about appearance—it is about identity, precision, and how people carry themselves back into the world.',
+        'And now, the industry is shifting.',
+        'A.I. will be here. It will continue to grow. And like anything placed in your hands, it will either guide your direction—or distract from it. Which is why control matters now more than ever. Not just of the tools. But of your path.',
+        'Everything you need to evolve already exists within your reach.',
+        'The question is: Will you use it intentionally?',
+        'Because you are not just working. You are building something. And the professionals who understand that… are the ones who will define what this industry becomes next.',
+        '— AXIS HAIR™'
       ],
-      pullQuote: 'Precision is no longer about control—it is about confidence held in restraint.',
       layout: 'center' as const,
       theme: 'light' as const
     },
@@ -94,8 +104,27 @@ const IssueTemplate: React.FC = () => {
       theme: 'light' as const
     },
     {
+      id: 'financials',
+      number: 'VI',
+      title: 'FINANCIALS',
+      subtitle: 'VI. Chapter',
+      imagePath: financialsImg,
+      content: [
+        'BUILD WITH INTENTION',
+        'The difference is not talent.',
+        'It is awareness.',
+        'Stylists who grow: – track their numbers – understand their patterns – make decisions before problems appear',
+        'Technology gives you visibility.',
+        'What you do with it determines your outcome.',
+        'The chair can produce income.',
+        'But a system produces growth.'
+      ],
+      layout: 'center' as const,
+      theme: 'light' as const
+    },
+    {
       id: 'feature-segment',
-      number: '07',
+      number: '08',
       title: 'FEATURE SEGMENT',
       subtitle: 'The Masterclass',
       imagePath: featureImg,
@@ -108,7 +137,7 @@ const IssueTemplate: React.FC = () => {
     },
     {
       id: 'the-direction',
-      number: '08',
+      number: '09',
       title: 'THE DIRECTION',
       subtitle: 'Future Forecast',
       imagePath: directionImg,
@@ -130,29 +159,41 @@ const IssueTemplate: React.FC = () => {
         imagePath={issue01}
         description="Exploring the intersection of architectural form, cultural identity, and the future of consultation."
       />
+
+      {/* Hero Intro Block */}
+      <div className="py-32 md:py-48 text-center px-8 bg-[#F5F1E8]">
+        <div className="max-w-[1100px] mx-auto">
+          <p className="text-base md:text-lg tracking-[0.3em] uppercase mb-4 opacity-80">AXIS HAIR™</p>
+          <p className="text-[11px] md:text-sm tracking-[0.6em] uppercase mb-8 opacity-60">THE INDUSTRY EDIT</p>
+          <p className="text-[10px] tracking-[0.4em] uppercase mb-16 opacity-40">APRIL 2026</p>
+          <h1 className="text-6xl md:text-9xl font-serif uppercase tracking-tighter leading-none">THE QUIET EDGE</h1>
+        </div>
+      </div>
       
-      <div className="relative">
-        {/* Minimal Navigation Sidebar */}
-        <div className="fixed right-12 top-1/2 -translate-y-1/2 z-40 hidden md:flex flex-col gap-8">
-          {sections.map((s) => (
-            <a 
-              key={s.id} 
-              href={`#${s.id}`} 
-              className="w-[1px] h-6 bg-black/20 hover:bg-gold transition-all duration-700 group relative"
-            >
-              <span className="absolute right-8 top-1/2 -translate-y-1/2 text-[8px] tracking-[0.5em] text-gold opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap uppercase">
-                {s.title}
-              </span>
-            </a>
+      <div className="relative w-full flex flex-col items-center">
+        <div className="w-full max-w-[1600px] mx-auto px-4 md:px-8">
+          {/* Minimal Navigation Sidebar */}
+          <div className="fixed right-12 top-1/2 -translate-y-1/2 z-40 hidden lg:flex flex-col gap-8">
+            {sections.map((s) => (
+              <a 
+                key={s.id} 
+                href={`#${s.id}`} 
+                className="w-[1px] h-6 bg-black/20 hover:bg-gold transition-all duration-700 group relative"
+              >
+                <span className="absolute right-8 top-1/2 -translate-y-1/2 text-[8px] tracking-[0.5em] text-gold opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap uppercase">
+                  {s.title}
+                </span>
+              </a>
+            ))}
+          </div>
+
+          {sections.map((section) => (
+            <MagazineSection 
+              key={section.id}
+              {...section}
+            />
           ))}
         </div>
-
-        {sections.map((section) => (
-          <MagazineSection 
-            key={section.id}
-            {...section}
-          />
-        ))}
       </div>
 
       {/* Editorial Footer */}
