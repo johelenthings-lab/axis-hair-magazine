@@ -1,16 +1,25 @@
 import React from 'react';
 import CoverHero from '../components/magazine/CoverHero';
 import MagazineSection from '../components/magazine/MagazineSection';
-import coverImg from '../assets/images/cover.png';
-import trendImg from '../assets/images/trend.png';
+
+// April Issue Editorial Assets
+import pulseImg from "../assets/images/april/april-01-the-pulse.png";
+import trendImg from "../assets/images/april/april-03-trend-layers.png";
+import culturalImg from "../assets/images/april/april-04-cultural-spotlight.png";
+import chairImg from "../assets/images/april/april-05-the-chair.png";
+import techImg from "../assets/images/april/april-06-technology-consultation-shift.png";
+import featureImg from "../assets/images/april/april-07-feature-segment.png";
+import directionImg from "../assets/images/april/april-08-the-direction.png";
+import issue01 from "../assets/images/issue-01.png";
 
 const IssueTemplate: React.FC = () => {
   const sections = [
     {
       id: 'pulse',
       number: '01',
-      title: 'The Pulse',
+      title: 'THE PULSE',
       subtitle: 'Industry Momentum',
+      imagePath: pulseImg,
       content: [
         'The heartbeat of the professional hair industry is accelerating. As we enter the second quarter of 2026, the convergence of high-fashion aesthetics and rapid technological integration is redefining the salon floor.',
         'From London to Tokyo, the shift towards hyper-personalized service models is no longer a trend—it is the baseline expectation for the modern luxury consumer.'
@@ -21,7 +30,7 @@ const IssueTemplate: React.FC = () => {
     {
       id: 'founders-note',
       number: '02',
-      title: 'Founder’s Note',
+      title: 'FOUNDER’S NOTE',
       subtitle: 'A Vision for AXIS',
       content: [
         'AXIS HAIR was born from a singular belief: that the tools we use should be as beautiful and precise as the art we create. Our mission has always been to bridge the gap between technical mastery and creative intuition.',
@@ -34,7 +43,7 @@ const IssueTemplate: React.FC = () => {
     {
       id: 'trend-layers',
       number: '03',
-      title: 'Trend Layers',
+      title: 'TREND LAYERS',
       subtitle: 'Texture & Form',
       imagePath: trendImg,
       content: [
@@ -47,9 +56,9 @@ const IssueTemplate: React.FC = () => {
     {
       id: 'cultural-spotlight',
       number: '04',
-      title: 'Cultural Spotlight',
+      title: 'CULTURAL SPOTLIGHT',
       subtitle: 'Global Perspectives',
-      imagePath: trendImg, // Placeholder for cultural image
+      imagePath: culturalImg,
       content: [
         'Hair is the ultimate cultural signifier. In our spotlight this month, we examine how heritage styling techniques from the African diaspora are being elevated into the global high-fashion narrative.',
         'Respect, education, and celebration are the pillars of this cultural evolution within the professional space.'
@@ -60,8 +69,9 @@ const IssueTemplate: React.FC = () => {
     {
       id: 'the-chair',
       number: '05',
-      title: 'The Chair',
+      title: 'THE CHAIR',
       subtitle: 'The Stylist Experience',
+      imagePath: chairImg,
       content: [
         'The relationship between the stylist and the client remains the industry\'s most sacred asset. However, the nature of "The Chair" is changing.',
         'We explore how ergonomics and mental wellness are becoming as vital to a stylist\'s success as their technical precision.'
@@ -73,9 +83,9 @@ const IssueTemplate: React.FC = () => {
     {
       id: 'technology-shift',
       number: '06',
-      title: 'Technology Shift',
+      title: 'TECHNOLOGY & CONSULTATION SHIFT',
       subtitle: 'Consultation 2.0',
-      imagePath: trendImg, // Placeholder
+      imagePath: techImg,
       content: [
         'Digital integration is finally becoming invisible. The shift from "AI as a novelty" to "Consultation as a data-driven art form" is here.',
         'AXIS HAIR leads the charge in defining how technology enhances human touch rather than replacing it.'
@@ -86,9 +96,9 @@ const IssueTemplate: React.FC = () => {
     {
       id: 'feature-segment',
       number: '07',
-      title: 'Feature Segment',
+      title: 'FEATURE SEGMENT',
       subtitle: 'The Masterclass',
-      imagePath: coverImg,
+      imagePath: featureImg,
       content: [
         'A deep dive into the creative mind of Kenneth Aguillera. This segment breaks down the "Liquid Gold" collection—a masterclass in fluid movement and metallic shine.',
         'Technique meets philosophy in this exclusive 20-page exploration of craft.'
@@ -99,8 +109,9 @@ const IssueTemplate: React.FC = () => {
     {
       id: 'the-direction',
       number: '08',
-      title: 'The Direction',
+      title: 'THE DIRECTION',
       subtitle: 'Future Forecast',
+      imagePath: directionImg,
       content: [
         'Where do we go from here? The Direction outlines the trajectory for the remainder of the year.',
         'Sustainability is no longer a choice; it is the blueprint. Circular beauty systems and regenerative sourcing are the next frontiers.'
@@ -112,11 +123,11 @@ const IssueTemplate: React.FC = () => {
   ];
 
   return (
-    <div className="bg-black text-white overflow-hidden">
+    <div className="bg-[#F5F1E8] text-[#111111] overflow-hidden">
       <CoverHero 
         title="THE QUIET EDGE"
         issueDate="APRIL 2026 | VOLUME 42"
-        imagePath={coverImg}
+        imagePath={issue01}
         description="Exploring the intersection of architectural form, cultural identity, and the future of consultation."
       />
       
@@ -127,7 +138,7 @@ const IssueTemplate: React.FC = () => {
             <a 
               key={s.id} 
               href={`#${s.id}`} 
-              className="w-[1px] h-6 bg-white/20 hover:bg-gold transition-all duration-700 group relative"
+              className="w-[1px] h-6 bg-black/20 hover:bg-gold transition-all duration-700 group relative"
             >
               <span className="absolute right-8 top-1/2 -translate-y-1/2 text-[8px] tracking-[0.5em] text-gold opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap uppercase">
                 {s.title}
@@ -145,7 +156,7 @@ const IssueTemplate: React.FC = () => {
       </div>
 
       {/* Editorial Footer */}
-      <footer className="py-64 bg-black text-center border-t border-white/5">
+      <footer className="py-64 bg-[#F5F1E8] text-center border-t border-black/5">
         <div className="container">
           <p className="text-gold tracking-[0.8em] uppercase text-[10px] mb-12">End of Issue</p>
           <h2 className="text-4xl md:text-6xl font-serif mb-12 opacity-40 italic">AXIS HAIR™</h2>

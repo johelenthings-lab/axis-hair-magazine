@@ -14,7 +14,7 @@ const CoverHero: React.FC<CoverHeroProps> = ({ title, issueDate, imagePath, desc
   const opacity = useTransform(scrollY, [0, 500], [1, 0]);
 
   return (
-    <div className="relative h-screen w-full overflow-hidden flex items-center justify-center bg-black">
+    <div className="relative h-screen w-full overflow-hidden flex items-center justify-center bg-[#F5F1E8]">
       {/* Background Image with Parallax and Cinematic Zoom */}
       <motion.div 
         style={{ y }}
@@ -25,7 +25,7 @@ const CoverHero: React.FC<CoverHeroProps> = ({ title, issueDate, imagePath, desc
           src={imagePath} 
           alt={title}
           style={{ animation: 'kenburns 30s infinite alternate linear' }}
-          className="w-full h-full object-cover grayscale contrast-125 brightness-75"
+          className="w-full h-full object-cover"
         />
       </motion.div>
 

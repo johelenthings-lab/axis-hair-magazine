@@ -23,19 +23,19 @@ const Header: React.FC = () => {
   return (
     <header 
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${
-        isScrolled ? 'bg-black/90 backdrop-blur-md py-4' : 'bg-transparent py-8'
+        isScrolled ? 'bg-[#F5F1E8]/90 backdrop-blur-md py-4' : 'bg-transparent py-8'
       }`}
     >
       <div className="container flex justify-between items-center">
         <button 
           onClick={() => setIsMenuOpen(true)}
-          className="text-white hover:text-gold transition-colors"
+          className="text-[#111111] hover:text-gold transition-colors"
         >
           <Menu size={24} />
         </button>
 
         <Link to="/" className="text-center group">
-          <h1 className="text-2xl md:text-4xl tracking-[0.3em] font-light group-hover:text-gold transition-colors">
+          <h1 className="text-2xl md:text-4xl tracking-[0.3em] font-light text-[#111111] group-hover:text-gold transition-colors">
             AXIS HAIR<span className="text-xs align-top">™</span>
           </h1>
           <p className="text-[10px] tracking-[0.5em] text-gray-400 mt-1 uppercase">
@@ -43,7 +43,7 @@ const Header: React.FC = () => {
           </p>
         </Link>
 
-        <button className="text-white hover:text-gold transition-colors">
+        <button className="text-[#111111] hover:text-gold transition-colors">
           <Search size={24} />
         </button>
       </div>
@@ -55,11 +55,11 @@ const Header: React.FC = () => {
             animate={{ x: 0 }}
             exit={{ x: '-100%' }}
             transition={{ type: 'tween', duration: 0.5, ease: [0.65, 0, 0.35, 1] }}
-            className="fixed inset-0 bg-black z-[60] flex flex-col p-8 md:p-16"
+            className="fixed inset-0 bg-[#F5F1E8] z-[60] flex flex-col p-8 md:p-16 text-[#111111]"
           >
             <div className="flex justify-between items-center mb-16">
               <h2 className="text-xl tracking-widest text-gold">NAVIGATION</h2>
-              <button onClick={() => setIsMenuOpen(false)} className="text-white">
+              <button onClick={() => setIsMenuOpen(false)} className="text-[#111111]">
                 <X size={32} />
               </button>
             </div>
@@ -71,7 +71,7 @@ const Header: React.FC = () => {
               <Link to="/contact" className="text-4xl md:text-6xl font-serif hover:text-gold transition-colors italic">Contact</Link>
             </nav>
 
-            <div className="mt-auto pt-16 border-t border-white/10 grid md:grid-cols-2 gap-8">
+            <div className="mt-auto pt-16 border-t border-black/10 grid md:grid-cols-2 gap-8">
               <div>
                 <p className="text-gold text-xs tracking-widest mb-4">SOCIAL</p>
                 <div className="flex gap-4">
