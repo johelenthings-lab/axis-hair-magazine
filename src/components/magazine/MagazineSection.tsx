@@ -12,19 +12,21 @@ interface MagazineSectionProps {
   theme?: 'light' | 'dark';
   layout?: 'left' | 'right' | 'center' | 'full';
   layoutVariant?: 'cinematic' | 'staggered' | 'grid' | 'default';
+  fontOption?: 1 | 2 | 3;
 }
 
 const MagazineSection: React.FC<MagazineSectionProps> = ({ 
   id, title, subtitle, content, pullQuote, imagePath, number, theme = 'dark', layout = 'left',
-  layoutVariant = 'default'
+  layoutVariant = 'default', fontOption = 1
 }) => {
   const isDark = theme === 'dark';
   const isFounderNote = id === 'founders-note';
-  const isFinancials = id === 'financials';
+  const isFinancials = id === 'financials' || title.toLowerCase().includes('financials');
   const isCinematic = layoutVariant === 'cinematic' || isFinancials || id === 'feature-segment' || id === 'the-direction';
-  const isStaggered = layoutVariant === 'staggered' || id === 'pulse' || id === 'the-chair' || id === 'technology-shift';
+  const isStaggered = layoutVariant === 'staggered' || id === 'pulse' || (id === 'the-chair' && !isFinancials) || id === 'technology-shift';
   
   const isCentered = layout === 'center' || isFounderNote;
+  const fontClass = `font-option-${fontOption}`;
 
   // Spacing and width logic
   const sectionMaxWidth = isFinancials ? 'max-w-none' : isCinematic ? 'max-w-[1600px]' : isStaggered ? 'max-w-[1300px]' : 'max-w-[1100px]';
@@ -49,22 +51,22 @@ const MagazineSection: React.FC<MagazineSectionProps> = ({
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 1.2 }}
-          className={`mb-20 md:mb-28 ${isFinancials ? 'px-8 md:px-24' : ''}`}
+          className={`mb-12 md:mb-16 ${isFinancials ? 'px-8 md:px-24' : ''}`}
         >
-          <div className={`flex items-center gap-4 mb-10 ${isCentered ? 'justify-center' : ''}`}>
-            <span className="text-gold font-serif italic text-base opacity-50">{number}</span>
-            <div className="h-[1px] w-8 bg-gold/20" />
-            <span className={`text-[10px] tracking-[0.4em] uppercase ${isDark ? 'text-gray-500' : 'text-gray-400'}`}>
+          <div className={`flex items-center gap-4 mb-6 ${isCentered ? 'justify-center' : ''}`}>
+            <span className="text-gold font-serif italic text-lg opacity-60 tracking-widest">{number}</span>
+            <div className="h-[1px] w-8 bg-gold/30" />
+            <span className={`text-[10px] tracking-[0.4em] uppercase font-sans ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
               {subtitle || 'Editorial'}
             </span>
           </div>
-          <h2 className="font-serif text-[2rem] md:text-[2.5rem] lg:text-[3rem] leading-tight mb-8 uppercase tracking-[0.08em] max-w-4xl mx-auto">
+          <h2 className={`${fontClass} text-3xl md:text-5xl lg:text-6xl leading-[1.1] mb-8 normal-case tracking-tight`}>
             {title}
           </h2>
         </motion.div>
 
         {/* Layout Wrapper */}
-        <div className={`flex flex-col ${isStaggered && !isCentered ? 'md:flex-row md:items-start md:gap-20' : 'items-center'} ${isFinancials ? 'w-full' : ''}`}>
+        <div className={`flex flex-col ${isStaggered && !isCentered ? 'md:flex-row md:items-start md:gap-24' : 'items-center'} ${isFinancials ? 'w-full' : ''}`}>
           
           {/* Image Content */}
           {imagePath && (
@@ -73,12 +75,12 @@ const MagazineSection: React.FC<MagazineSectionProps> = ({
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 1.5 }}
-              className={`mb-16 overflow-hidden w-full ${isStaggered && !isCentered ? 'md:w-3/5 md:mb-0' : ''} ${isFinancials ? 'relative h-[70vh] md:h-[85vh]' : ''}`}
+              className={`mb-20 overflow-hidden w-full ${isStaggered && !isCentered ? 'md:w-3/5 md:mb-0' : ''} ${isFinancials ? 'relative h-[70vh] md:h-[85vh]' : ''}`}
             >
               <img 
                 src={imagePath} 
                 alt={title}
-                className={`w-full h-auto block transition-transform duration-[0.6s] ease-in-out hover:scale-[1.01] ${isCinematic ? 'shadow-none' : 'shadow-2xl'} ${isFinancials ? 'h-full object-cover' : ''}`}
+                className={`w-full h-auto block transition-transform duration-[1.2s] ease-out hover:scale-[1.03] ${isCinematic ? 'shadow-none' : 'shadow-2xl'} ${isFinancials ? 'h-full object-cover' : ''}`}
                 style={{ margin: '0 auto' }}
               />
             </motion.div>
@@ -90,12 +92,12 @@ const MagazineSection: React.FC<MagazineSectionProps> = ({
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 1.2, delay: 0.2 }}
-            className={`space-y-10 ${isCentered ? 'mx-auto' : 'mx-auto md:mx-0'} ${isStaggered && !isCentered ? 'md:w-2/5 md:pt-12' : ''} ${isFinancials ? 'pb-20' : ''}`}
-            style={{ maxWidth: isFounderNote ? '600px' : isFinancials ? '900px' : '700px' }}
+            className={`${isFounderNote ? 'space-y-6' : 'space-y-12'} ${isCentered ? 'mx-auto' : 'mx-auto md:mx-0'} ${isStaggered && !isCentered ? 'md:w-2/5 md:pt-4' : ''} ${isFinancials ? 'pb-24 pt-12' : ''}`}
+            style={{ maxWidth: isFounderNote ? '600px' : isFinancials ? '900px' : '750px' }}
           >
             {content.map((paragraph, index) => (
-              <p key={index} className={`text-lg md:text-xl font-light leading-[1.85] ${
-                isDark ? 'text-white/80' : 'text-black/80'
+              <p key={index} className={`text-base md:text-lg font-light leading-[1.8] ${
+                isDark ? 'text-white/70' : 'text-black/70'
               } ${isCentered ? 'text-center' : 'text-left'}`}>
                 {paragraph}
               </p>
@@ -107,9 +109,9 @@ const MagazineSection: React.FC<MagazineSectionProps> = ({
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.3, duration: 1 }}
-                className={`mt-12 pt-12 border-t border-gold/10 ${isCentered ? 'text-center' : ''}`}
+                className={`mt-16 pt-16 border-t border-gold/20 ${isCentered ? 'text-center' : ''}`}
               >
-                <blockquote className="font-serif italic text-2xl md:text-3xl text-gold leading-tight">
+                <blockquote className="font-serif italic text-3xl md:text-4xl text-gold leading-tight tracking-tight">
                   "{pullQuote}"
                 </blockquote>
               </motion.div>
