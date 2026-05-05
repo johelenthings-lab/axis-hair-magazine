@@ -119,7 +119,7 @@ const IssueTemplate: React.FC = () => {
         'The chair can produce income.',
         'But a system produces growth.'
       ],
-      layout: 'center' as const,
+      layout: 'left' as const,
       theme: 'light' as const
     },
     {
@@ -155,7 +155,7 @@ const IssueTemplate: React.FC = () => {
     <div className="bg-[#F5F1E8] text-[#111111] overflow-hidden">
       <CoverHero 
         title="THE QUIET EDGE"
-        issueDate="APRIL 2026 | VOLUME 42"
+        issueDate="APRIL 2026 | VOLUME 01"
         imagePath={issue01}
         description="Exploring the intersection of architectural form, cultural identity, and the future of consultation."
       />
@@ -203,7 +203,7 @@ const IssueTemplate: React.FC = () => {
           <h2 className="text-4xl md:text-6xl font-serif mb-12 opacity-40 italic">AXIS HAIR™</h2>
           <div className="flex flex-col items-center gap-6 text-gray-500 tracking-[0.4em] text-[10px] uppercase">
             <span>The Industry Edit</span>
-            <span>Issue No. 42 • April 2026</span>
+            <span>Issue No. 01 • April 2026</span>
           </div>
         </div>
       </footer>

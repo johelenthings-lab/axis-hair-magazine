@@ -12,6 +12,8 @@ const CoverHero: React.FC<CoverHeroProps> = ({ title, issueDate, imagePath, desc
   const { scrollY } = useScroll();
   const y = useTransform(scrollY, [0, 500], [0, 100]);
   const opacity = useTransform(scrollY, [0, 500], [1, 0]);
+  
+  const isQuietEdge = title.toLowerCase().includes('quiet edge');
 
   return (
     <div className="relative h-screen w-full overflow-hidden flex items-center justify-center bg-[#F5F1E8]">
@@ -29,53 +31,70 @@ const CoverHero: React.FC<CoverHeroProps> = ({ title, issueDate, imagePath, desc
         />
       </motion.div>
 
-      {/* Overlay Text */}
+      {/* Split Editorial Layout Overlay */}
       <motion.div 
         style={{ opacity }}
-        className="relative z-20 text-center container pointer-events-none"
+        className="absolute inset-0 z-20 pointer-events-none flex flex-col justify-between p-2 md:p-8"
       >
-        <motion.p 
-          initial={{ opacity: 0, letterSpacing: '0.2em' }}
-          animate={{ opacity: 1, letterSpacing: '0.8em' }}
-          transition={{ duration: 1.5, delay: 0.5 }}
-          className="text-gold text-[10px] md:text-xs mb-12 uppercase"
-        >
-          {issueDate}
-        </motion.p>
-        
-        <motion.h2 
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 2, ease: [0.16, 1, 0.3, 1] }}
-          className="text-[4rem] md:text-[12vw] font-serif leading-[0.8] tracking-tighter mb-12"
-        >
-          {title.split(' ').map((word, i) => (
-            <span key={i} className="block">{word}</span>
-          ))}
-        </motion.h2>
-
-        <motion.p 
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1.5, delay: 1.5 }}
-          className="max-w-xl mx-auto text-xs md:text-sm text-white/50 leading-loose tracking-[0.4em] uppercase mb-16"
-        >
-          {description}
-        </motion.p>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 2 }}
-        >
-          <a 
-            href="#pulse" 
-            className="inline-flex items-center gap-6 text-[10px] tracking-[0.6em] uppercase text-white group pointer-events-auto"
+        {/* Top Tier: Issue Metadata */}
+        <div className={`flex justify-between items-start pt-0 w-full`}>
+          <motion.p 
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 1.5, delay: 0.5 }}
+            className="text-white text-[10px] md:text-xs uppercase tracking-[0.8em] whitespace-nowrap pl-12"
           >
-            <span>Enter the Issue</span>
-            <div className="h-[1px] w-12 bg-gold group-hover:w-24 transition-all duration-700" />
-          </a>
-        </motion.div>
+            {issueDate}
+          </motion.p>
+          <motion.p 
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 1.5, delay: 0.7 }}
+            className="text-white/60 text-[8px] md:text-[10px] uppercase tracking-[0.6em] text-right pr-12"
+          >
+            AXIS HAIR™ Editorial
+          </motion.p>
+        </div>
+
+        {/* Middle Tier: The Title */}
+        <div className={`flex ${isQuietEdge ? 'justify-end pr-2 md:pr-4' : 'justify-center'} items-center`}>
+          <motion.h2 
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 2, ease: [0.16, 1, 0.3, 1] }}
+            className={`${isQuietEdge ? 'text-[2.5rem] md:text-[7vw] text-right' : 'text-[4rem] md:text-[12vw] text-center'} font-serif leading-[0.8] tracking-tighter text-white`}
+          >
+            {title.split(' ').map((word, i) => (
+              <span key={i} className="block">{word}</span>
+            ))}
+          </motion.h2>
+        </div>
+
+        {/* Bottom Tier: Description & Action */}
+        <div className={`flex flex-col ${isQuietEdge ? 'items-end pr-2 md:pr-4' : 'items-center'} gap-8 mb-16`}>
+          <motion.p 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1.5, delay: 1.5 }}
+            className={`max-w-xs md:max-w-xl text-[10px] md:text-sm text-white/50 leading-loose tracking-[0.4em] uppercase ${isQuietEdge ? 'text-right' : 'text-center'}`}
+          >
+            {description}
+          </motion.p>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 2 }}
+          >
+            <a 
+              href="#pulse" 
+              className="inline-flex items-center gap-6 text-[10px] tracking-[0.6em] uppercase text-white group pointer-events-auto"
+            >
+              <span>Enter the Issue</span>
+              <div className="h-[1px] w-12 bg-gold group-hover:w-24 transition-all duration-700" />
+            </a>
+          </motion.div>
+        </div>
       </motion.div>
 
       {/* Subtle Scroll Indicator */}

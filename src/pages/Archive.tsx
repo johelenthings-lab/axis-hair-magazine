@@ -117,6 +117,9 @@ const Archive: React.FC = () => {
               {/* Cover Image Container */}
               <div 
                 className="cover-container shadow-sm"
+                style={{ 
+                  backgroundColor: issue.id === '3' ? '#ab8869' : '#E5E7EB' 
+                }}
               >
                 {issue.shipped ? (
                   <Link to={`/issue/${issue.id}`} style={{ display: 'block', height: '100%', width: '100%', position: 'relative' }}>
@@ -126,11 +129,43 @@ const Archive: React.FC = () => {
                       style={{ 
                         width: '100%', 
                         height: '100%', 
-                        objectFit: 'cover', 
-                        transition: 'transform 2000ms cubic-bezier(0.22, 1, 0.36, 1)' 
+                        objectFit: issue.id === '3' ? 'contain' : 'cover', 
+                        transition: 'transform 2000ms cubic-bezier(0.22, 1, 0.36, 1)',
                       }}
-                      className="group-hover:scale-105"
+                      className="group-hover:opacity-90"
                     />
+                    {/* Barcode Patch for Issue 10 */}
+                    {issue.id === '10' && (
+                      <div style={{
+                        position: 'absolute',
+                        bottom: '3.0%',
+                        left: '0.5%',
+                        width: '35%',
+                        height: '16%',
+                        background: 'radial-gradient(circle at 30% 30%, #4A3222 0%, #2D1B10 70%, #1A120B 100%)',
+                        opacity: 1,
+                        zIndex: 10,
+                        boxShadow: 'inset 0 0 15px rgba(0,0,0,0.4)',
+                        borderRadius: '1px',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        padding: '0.5rem'
+                      }}>
+                        <span style={{ 
+                          color: 'rgba(255,255,255,0.7)', 
+                          fontSize: '9px', 
+                          letterSpacing: '0.4em', 
+                          textTransform: 'uppercase', 
+                          fontWeight: 500,
+                          textAlign: 'center',
+                          lineHeight: 1.4,
+                          fontFamily: "'Playfair Display', serif"
+                        }}>
+                          The Blueprint
+                        </span>
+                      </div>
+                    )}
                     {/* Unlocked Overlay */}
                     <div style={{
                       position: 'absolute',
@@ -156,6 +191,30 @@ const Archive: React.FC = () => {
                         <div style={{ height: '1px', width: '3rem', backgroundColor: '#D4AF37' }} />
                       </div>
                     </div>
+                    {/* Decorative Label for Issue 03 */}
+                    {issue.id === '3' && (
+                      <div style={{
+                        position: 'absolute',
+                        bottom: '0',
+                        left: '0',
+                        right: '0',
+                        backgroundColor: '#000000',
+                        padding: '1.5rem 1rem',
+                        textAlign: 'center',
+                        zIndex: 5
+                      }}>
+                        <span style={{ 
+                          fontSize: '18px', 
+                          letterSpacing: '0.4em', 
+                          textTransform: 'uppercase', 
+                          color: '#FFFFFF',
+                          fontWeight: 500,
+                          fontFamily: "'Playfair Display', serif"
+                        }}>
+                          The Global Line
+                        </span>
+                      </div>
+                    )}
                   </Link>
                 ) : (
                   <div 
@@ -168,10 +227,66 @@ const Archive: React.FC = () => {
                       style={{ 
                         width: '100%', 
                         height: '100%', 
-                        objectFit: 'cover', 
-                        transition: 'all 700ms'
+                        objectFit: issue.id === '3' ? 'contain' : 'cover', 
+                        transition: 'all 700ms',
                       }}
                     />
+                    {/* Barcode Patch for Issue 10 */}
+                    {issue.id === '10' && (
+                      <div style={{
+                        position: 'absolute',
+                        bottom: '3.0%',
+                        left: '0.5%',
+                        width: '35%',
+                        height: '16%',
+                        background: 'radial-gradient(circle at 30% 30%, #4A3222 0%, #2D1B10 70%, #1A120B 100%)',
+                        opacity: 1,
+                        zIndex: 10,
+                        boxShadow: 'inset 0 0 15px rgba(0,0,0,0.4)',
+                        borderRadius: '1px',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        padding: '0.5rem'
+                      }}>
+                        <span style={{ 
+                          color: 'rgba(255,255,255,0.7)', 
+                          fontSize: '9px', 
+                          letterSpacing: '0.4em', 
+                          textTransform: 'uppercase', 
+                          fontWeight: 500,
+                          textAlign: 'center',
+                          lineHeight: 1.4,
+                          fontFamily: "'Playfair Display', serif"
+                        }}>
+                          The Blueprint
+                        </span>
+                      </div>
+                    )}
+                    {/* Decorative Label for Issue 03 */}
+                    {issue.id === '3' && (
+                      <div style={{
+                        position: 'absolute',
+                        bottom: '0',
+                        left: '0',
+                        right: '0',
+                        backgroundColor: '#000000',
+                        padding: '1.5rem 1rem',
+                        textAlign: 'center',
+                        zIndex: 5
+                      }}>
+                        <span style={{ 
+                          fontSize: '18px', 
+                          letterSpacing: '0.4em', 
+                          textTransform: 'uppercase', 
+                          color: '#FFFFFF',
+                          fontWeight: 500,
+                          fontFamily: "'Playfair Display', serif"
+                        }}>
+                          The Global Line
+                        </span>
+                      </div>
+                    )}
                   </div>
                 )}
               </div>

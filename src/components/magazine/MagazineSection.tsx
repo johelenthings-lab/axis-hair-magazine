@@ -24,7 +24,7 @@ const MagazineSection: React.FC<MagazineSectionProps> = ({
   const isCinematic = layoutVariant === 'cinematic' || isFinancials || id === 'feature-segment' || id === 'the-direction';
   const isStaggered = layoutVariant === 'staggered' || id === 'pulse' || id === 'the-chair' || id === 'technology-shift';
   
-  const isCentered = layout === 'center' || isFounderNote || isFinancials;
+  const isCentered = layout === 'center' || isFounderNote;
 
   // Spacing and width logic
   const sectionMaxWidth = isFinancials ? 'max-w-none' : isCinematic ? 'max-w-[1600px]' : isStaggered ? 'max-w-[1300px]' : 'max-w-[1100px]';
@@ -90,7 +90,7 @@ const MagazineSection: React.FC<MagazineSectionProps> = ({
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 1.2, delay: 0.2 }}
-            className={`space-y-10 ${isCentered ? 'mx-auto' : 'mx-auto md:mx-0'} ${isStaggered && !isCentered ? 'md:w-2/5 md:pt-12' : ''} ${isFinancials ? 'px-8 md:px-24 pb-20' : ''}`}
+            className={`space-y-10 ${isCentered ? 'mx-auto' : 'mx-auto md:mx-0'} ${isStaggered && !isCentered ? 'md:w-2/5 md:pt-12' : ''} ${isFinancials ? 'pb-20' : ''}`}
             style={{ maxWidth: isFounderNote ? '600px' : isFinancials ? '900px' : '700px' }}
           >
             {content.map((paragraph, index) => (
