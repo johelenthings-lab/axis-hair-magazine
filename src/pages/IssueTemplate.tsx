@@ -90,19 +90,40 @@ const IssueTemplate: React.FC = () => {
     {
       id: 'the-chair',
       number: '04',
-      title: 'Where Trust Becomes Revenue',
+      title: 'Building Beyond the Chair',
       subtitle: 'THE CHAIR: FINANCIALS',
       imagePath: chairImg,
       content: [
-        'Before a client agrees to the service, the price, or the maintenance, they first have to believe the professional understands the vision.',
-        'The consultation is no longer just the first few minutes before the appointment begins. It is the first business checkpoint. This is where the client decides if they feel heard, if the price makes sense, if the service feels worth it, and if they trust the professional sitting across from them.',
-        'When the consultation is unclear, everything after it gets harder. The client hesitates. The stylist or barber spends extra time explaining the same thing twice. The price feels harder to defend. Maintenance becomes an afterthought. Expectations get blurry. And when expectations are blurry, confidence drops on both sides of the chair.',
-        'A stronger consultation does the opposite. It gives the client language for what they want. It gives the professional room to explain what is realistic. It turns the price into part of the plan instead of a surprise at the end. It helps the client understand not only the look, but the process, the upkeep, and the value behind the service.',
-        'That is where trust becomes revenue. Clients are more likely to approve a service when they can clearly see the direction. They are more likely to respect premium pricing when they understand the work behind the result. They are more likely to rebook when maintenance has already been explained before they leave the chair.',
-        'This is where tools like AXIS HAIR™ become useful. AXIS HAIR™ gives stylists and barbers a way to support the consultation with visual direction, client clarity, and better service planning. It does not replace the professional eye. It helps organize the conversation so the professional can lead with more confidence.',
-        'The money is not only in the finished look. The money is in the trust built before the service begins.'
+        'This section is our way of saying thank you.',
+        'Thank you for the early mornings, the packed Saturdays, the late clients, the careful details, the last-minute adjustments, the conversations, the patience, the creativity, and the work people sometimes do not fully understand until they see the finished result.',
+        'You help people look beautiful. You help people feel clean, confident, polished, expressive, professional, renewed, and ready to walk back into the world with their head a little higher. That matters.',
+        'And because that work matters, your future matters too.',
+        'Behind the chair, the day can move fast. One appointment rolls into the next. A cut, a color, a shape-up, a treatment, a consultation, a quick cleanup, a client running late, another client needing more than they booked. By the end of the day, the work is done — but the bigger picture can still sit untouched.',
+        'That is where the financial conversation has to get more honest.',
+        'Money in this industry is not only about what comes in at checkout. It is about what stays, what repeats, what grows, and what gives you more options over time. A packed schedule may look successful, but if every dollar depends on standing behind the chair without a plan, the business is still fragile.',
+        'The goal is not just to work more. The goal is to build better.',
+        '### Practical Moves That Build Future Stability',
+        'Before the May Financial Issue arrives, here are a few immediate moves that can turn daily services into future stability:',
+        '**The Rebooking Question:** “Do you want to go ahead and protect your next spot while your schedule is still open?”',
+        '**The Maintenance Recommendation:** “To keep this looking right, I would not wait longer than ___ weeks before your next visit.”',
+        '**At the end of each week, look at three things:**',
+        '- What service brought in the most money?',
+        '- What took the most time for the least return?',
+        '- Who should be followed up with before they drift away?',
+        '**Once a month, choose one business move:**',
+        '- Raise one outdated price.',
+        '- Package two services that naturally belong together.',
+        '- Promote one high-value service.',
+        '- Create one client follow-up list.',
+        'None of this has to be complicated. But it does have to become consistent. These small adjustments are the bridge between the daily grind and a sustainable future.',
+        'The chair can pay the bills, but with intention, it can also fund the next step: a better schedule, a stronger brand, a private studio, a small team, advanced education, product sales, digital offers, savings, investments, or simply more control over your time.',
+        'That is the part too many professionals are not taught early enough. You are not only doing hair. You are building leverage.',
+        'Every service, every rebook, every client relationship, every price adjustment, and every better business habit is either keeping you in the same cycle or helping you create more room for the future.',
+        'So yes, this section is about money.',
+        'But more than that, it is about making sure the work you do for everyone else is also building something for you.',
+        'The chair is not the whole destination.',
+        'It is the foundation.'
       ],
-      pullQuote: 'The chair is where transformation meets conversation.',
       layout: 'right' as const,
       theme: 'dark' as const
     },
@@ -156,7 +177,7 @@ const IssueTemplate: React.FC = () => {
 
   return (
     <div className="bg-[#F5F1E8] text-[#111111] overflow-hidden">
-      <CoverHero 
+      <CoverHero
         title="THE QUIET EDGE"
         issueDate="APRIL 2026 | VOLUME 01"
         imagePath={issue01}
@@ -173,15 +194,15 @@ const IssueTemplate: React.FC = () => {
           <h1 className={`text-6xl md:text-9xl ${fontClass} leading-none`}>THE QUIET EDGE</h1>
         </div>
       </div>
-      
+
       <div className="relative w-full flex flex-col items-center">
         <div className="w-full max-w-[1600px] mx-auto px-4 md:px-8">
           {/* Minimal Navigation Sidebar */}
           <div className="fixed right-12 top-1/2 -translate-y-1/2 z-40 hidden lg:flex flex-col gap-8">
             {sections.map((s) => (
-              <a 
-                key={s.id} 
-                href={`#${s.id}`} 
+              <a
+                key={s.id}
+                href={`#${s.id}`}
                 className="w-[1px] h-6 bg-black/20 hover:bg-gold transition-all duration-700 group relative"
               >
                 <span className="absolute right-8 top-1/2 -translate-y-1/2 text-[8px] tracking-[0.5em] text-gold opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap uppercase">
@@ -192,7 +213,7 @@ const IssueTemplate: React.FC = () => {
           </div>
 
           {sections.map((section) => (
-            <MagazineSection 
+            <MagazineSection
               key={section.id}
               {...section}
               fontOption={fontOption}
