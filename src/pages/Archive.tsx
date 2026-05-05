@@ -128,12 +128,196 @@ const Archive: React.FC = () => {
                       alt={issue.title}
                       style={{ 
                         width: '100%', 
-                        height: '100%', 
+                        height: issue.id === '8' ? '108%' : '100%', 
+                        top: issue.id === '8' ? '-4%' : '0',
+                        position: 'absolute',
                         objectFit: issue.id === '3' ? 'contain' : 'cover', 
+                        objectPosition: 'center',
                         transition: 'transform 2000ms cubic-bezier(0.22, 1, 0.36, 1)',
                       }}
                       className="group-hover:opacity-90"
                     />
+                    {/* Patch for Issue 11 - Hello Color Labels */}
+                    {issue.id === '11' && (
+                      <>
+                        <div style={{
+                          position: 'absolute',
+                          top: '25.5%',
+                          left: '0.2%',
+                          backgroundColor: '#FFFFFF',
+                          padding: '0px 2px',
+                          zIndex: 10,
+                        }}>
+                          <span style={{ 
+                            fontSize: '7.5px', 
+                            letterSpacing: '0.4em', 
+                            textTransform: 'uppercase', 
+                            color: '#000000',
+                            fontWeight: 700,
+                            whiteSpace: 'nowrap',
+                            lineHeight: 1
+                          }}>
+                            Hello Color
+                          </span>
+                        </div>
+                        <div style={{
+                          position: 'absolute',
+                          top: '25.5%',
+                          right: '0.2%',
+                          backgroundColor: '#FFFFFF',
+                          padding: '0px 16px',
+                          zIndex: 10,
+                        }}>
+                          <span style={{ 
+                            fontSize: '7.5px', 
+                            letterSpacing: '0.4em', 
+                            textTransform: 'uppercase', 
+                            color: '#000000',
+                            fontWeight: 700,
+                            whiteSpace: 'nowrap',
+                            lineHeight: 1
+                          }}>
+                            Volume 11
+                          </span>
+                        </div>
+                      </>
+                    )}
+                    {/* Patch for Issue 10 - Volume Label */}
+                    {issue.id === '10' && (
+                      <>
+                        <div style={{
+                          position: 'absolute',
+                          top: '24.5%',
+                          left: '1.5%',
+                          backgroundColor: '#1C1711',
+                          padding: '2px 12px',
+                          zIndex: 10,
+                        }}>
+                          <span style={{ 
+                            fontSize: '8.5px', 
+                            letterSpacing: '0.4em', 
+                            textTransform: 'uppercase', 
+                            color: '#FFFFFF',
+                            fontWeight: 700,
+                            whiteSpace: 'nowrap',
+                          }}>
+                            Volume 10
+                          </span>
+                        </div>
+                        <div style={{
+                          position: 'absolute',
+                          top: '24.5%',
+                          right: '0.5%',
+                          backgroundColor: '#1C1711',
+                          padding: '2px 25px',
+                          zIndex: 10,
+                        }}>
+                          <span style={{ 
+                            fontSize: '8.5px', 
+                            letterSpacing: '0.4em', 
+                            textTransform: 'uppercase', 
+                            color: '#FFFFFF',
+                            fontWeight: 700,
+                            whiteSpace: 'nowrap',
+                          }}>
+                            Planning is Golden
+                          </span>
+                        </div>
+                      </>
+                    )}
+                    {/* Patch for Issue 09 - Direction Label */}
+                    {issue.id === '9' && (
+                      <>
+                        <div style={{
+                          position: 'absolute',
+                          top: '26%',
+                          left: '1.5%',
+                          backgroundColor: '#000000',
+                          padding: '2px 12px',
+                          zIndex: 10,
+                        }}>
+                          <span style={{ 
+                            fontSize: '8.5px', 
+                            letterSpacing: '0.4em', 
+                            textTransform: 'uppercase', 
+                            color: '#FFFFFF',
+                            fontWeight: 700,
+                            whiteSpace: 'nowrap',
+                          }}>
+                            Embrace IT
+                          </span>
+                        </div>
+                        <div style={{
+                          position: 'absolute',
+                          top: '26%',
+                          right: '0.5%',
+                          backgroundColor: '#000000',
+                          padding: '2px 25px',
+                          zIndex: 10,
+                        }}>
+                          <span style={{ 
+                            fontSize: '8.5px', 
+                            letterSpacing: '0.4em', 
+                            textTransform: 'uppercase', 
+                            color: '#FFFFFF',
+                            fontWeight: 700,
+                            whiteSpace: 'nowrap',
+                          }}>
+                            Volume 9
+                          </span>
+                        </div>
+                      </>
+                    )}
+                    {/* Patch for Issue 08 - Volume Label */}
+                    {issue.id === '8' && (
+                      <div style={{
+                        position: 'absolute',
+                        top: '15%',
+                        left: '0.2%',
+                        backgroundColor: '#FFFFFF',
+                        padding: '2px 10px',
+                        zIndex: 10,
+                        boxShadow: '0 4px 10px rgba(0,0,0,0.05)'
+                      }}>
+                        <span style={{ 
+                          fontSize: '8px', 
+                          letterSpacing: '0.2em', 
+                          textTransform: 'uppercase', 
+                          color: '#1e3a8a',
+                          fontWeight: 600,
+                          whiteSpace: 'nowrap',
+                          fontFamily: "'Playfair Display', serif"
+                        }}>
+                          Volume 8
+                        </span>
+                      </div>
+                    )}
+                    {/* Patch for Issue 08 - Bottom Label */}
+                    {issue.id === '8' && (
+                      <div style={{
+                        position: 'absolute',
+                        bottom: '1%',
+                        left: '0',
+                        right: '0',
+                        backgroundColor: '#FFFFFF',
+                        padding: '12px 1rem',
+                        textAlign: 'center',
+                        zIndex: 10,
+                        boxShadow: '0 10px 25px rgba(0,0,0,0.1)'
+                      }}>
+                        <span style={{ 
+                          fontSize: '20px', 
+                          letterSpacing: '0.4em', 
+                          textTransform: 'uppercase', 
+                          color: '#1e3a8a',
+                          fontWeight: 600,
+                          whiteSpace: 'nowrap',
+                          fontFamily: "'Playfair Display', serif"
+                        }}>
+                          The Room
+                        </span>
+                      </div>
+                    )}
                     {/* Barcode Patch for Issue 10 */}
                     {issue.id === '10' && (
                       <div style={{
@@ -142,7 +326,7 @@ const Archive: React.FC = () => {
                         left: '0.5%',
                         width: '35%',
                         height: '16%',
-                        background: 'radial-gradient(circle at 30% 30%, #4A3222 0%, #2D1B10 70%, #1A120B 100%)',
+                        backgroundColor: '#000000',
                         opacity: 1,
                         zIndex: 10,
                         boxShadow: 'inset 0 0 15px rgba(0,0,0,0.4)',
@@ -153,17 +337,56 @@ const Archive: React.FC = () => {
                         padding: '0.5rem'
                       }}>
                         <span style={{ 
-                          color: 'rgba(255,255,255,0.7)', 
+                          color: '#FFFFFF', 
                           fontSize: '9px', 
                           letterSpacing: '0.4em', 
                           textTransform: 'uppercase', 
-                          fontWeight: 500,
+                          fontWeight: 700,
                           textAlign: 'center',
                           lineHeight: 1.4,
                           fontFamily: "'Playfair Display', serif"
                         }}>
                           The Blueprint
                         </span>
+                      </div>
+                    )}
+                    {/* Patch for Issue 07 */}
+                    {issue.id === '7' && (
+                      <div style={{
+                        position: 'absolute',
+                        top: '25.5%',
+                        right: '2%',
+                        backgroundColor: 'black',
+                        padding: '6px 10px',
+                        zIndex: 10,
+                      }}>
+                        <div style={{
+                          display: 'flex',
+                          flexDirection: 'column',
+                          alignItems: 'flex-end',
+                          gap: '2px'
+                        }}>
+                          <span style={{ 
+                            color: '#F5F1E8', 
+                            fontSize: '8px', 
+                            letterSpacing: '0.2em', 
+                            textTransform: 'uppercase', 
+                            fontWeight: 600,
+                            whiteSpace: 'nowrap',
+                          }}>
+                            The Art of Clean
+                          </span>
+                          <span style={{ 
+                            color: '#F5F1E8', 
+                            fontSize: '6px', 
+                            letterSpacing: '0.3em', 
+                            fontWeight: 400,
+                            whiteSpace: 'nowrap',
+                            opacity: 0.7
+                          }}>
+                            Edges Are Everything
+                          </span>
+                        </div>
                       </div>
                     )}
                     {/* Unlocked Overlay */}
@@ -208,7 +431,7 @@ const Archive: React.FC = () => {
                           letterSpacing: '0.4em', 
                           textTransform: 'uppercase', 
                           color: '#FFFFFF',
-                          fontWeight: 500,
+                          fontWeight: 700,
                           fontFamily: "'Playfair Display', serif"
                         }}>
                           The Global Line
@@ -226,11 +449,193 @@ const Archive: React.FC = () => {
                       alt={issue.title}
                       style={{ 
                         width: '100%', 
-                        height: '100%', 
+                        height: issue.id === '8' ? '108%' : '100%', 
+                        top: issue.id === '8' ? '-4%' : '0',
+                        position: 'absolute',
                         objectFit: issue.id === '3' ? 'contain' : 'cover', 
+                        objectPosition: 'center',
                         transition: 'all 700ms',
                       }}
                     />
+                    {/* Patch for Issue 11 - Hello Color Labels */}
+                    {issue.id === '11' && (
+                      <>
+                        <div style={{
+                          position: 'absolute',
+                          top: '25.5%',
+                          left: '0.2%',
+                          backgroundColor: '#FFFFFF',
+                          padding: '0px 2px',
+                          zIndex: 10,
+                        }}>
+                          <span style={{ 
+                            fontSize: '7.5px', 
+                            letterSpacing: '0.4em', 
+                            textTransform: 'uppercase', 
+                            color: '#000000',
+                            fontWeight: 700,
+                            whiteSpace: 'nowrap',
+                            lineHeight: 1
+                          }}>
+                            Hello Color
+                          </span>
+                        </div>
+                        <div style={{
+                          position: 'absolute',
+                          top: '25.5%',
+                          right: '0.2%',
+                          backgroundColor: '#FFFFFF',
+                          padding: '0px 16px',
+                          zIndex: 10,
+                        }}>
+                          <span style={{ 
+                            fontSize: '7.5px', 
+                            letterSpacing: '0.4em', 
+                            textTransform: 'uppercase', 
+                            color: '#000000',
+                            fontWeight: 700,
+                            whiteSpace: 'nowrap',
+                            lineHeight: 1
+                          }}>
+                            Volume 11
+                          </span>
+                        </div>
+                      </>
+                    )}
+                    {/* Patch for Issue 10 - Volume Label */}
+                    {issue.id === '10' && (
+                      <>
+                        <div style={{
+                          position: 'absolute',
+                          top: '24.5%',
+                          left: '1.5%',
+                          backgroundColor: '#1C1711',
+                          padding: '2px 12px',
+                          zIndex: 10,
+                        }}>
+                          <span style={{ 
+                            fontSize: '8.5px', 
+                            letterSpacing: '0.4em', 
+                            textTransform: 'uppercase', 
+                            color: '#FFFFFF',
+                            fontWeight: 700,
+                            whiteSpace: 'nowrap',
+                          }}>
+                            Volume 10
+                          </span>
+                        </div>
+                        <div style={{
+                          position: 'absolute',
+                          top: '24.5%',
+                          right: '0.5%',
+                          backgroundColor: '#1C1711',
+                          padding: '2px 25px',
+                          zIndex: 10,
+                        }}>
+                          <span style={{ 
+                            fontSize: '8.5px', 
+                            letterSpacing: '0.4em', 
+                            textTransform: 'uppercase', 
+                            color: '#FFFFFF',
+                            fontWeight: 700,
+                            whiteSpace: 'nowrap',
+                          }}>
+                            Planning is Golden
+                          </span>
+                        </div>
+                      </>
+                    )}
+                    {/* Patch for Issue 09 - Direction Label */}
+                    {issue.id === '9' && (
+                      <>
+                        <div style={{
+                          position: 'absolute',
+                          top: '26%',
+                          left: '1.5%',
+                          backgroundColor: '#000000',
+                          padding: '2px 12px',
+                          zIndex: 10,
+                        }}>
+                          <span style={{ 
+                            fontSize: '8.5px', 
+                            letterSpacing: '0.4em', 
+                            textTransform: 'uppercase', 
+                            color: '#FFFFFF',
+                            fontWeight: 500,
+                            whiteSpace: 'nowrap',
+                          }}>
+                            Embrace IT
+                          </span>
+                        </div>
+                        <div style={{
+                          position: 'absolute',
+                          top: '26%',
+                          right: '0.5%',
+                          backgroundColor: '#000000',
+                          padding: '2px 25px',
+                          zIndex: 10,
+                        }}>
+                          <span style={{ 
+                            fontSize: '8.5px', 
+                            letterSpacing: '0.4em', 
+                            textTransform: 'uppercase', 
+                            color: '#FFFFFF',
+                            fontWeight: 500,
+                            whiteSpace: 'nowrap',
+                          }}>
+                            Volume 9
+                          </span>
+                        </div>
+                      </>
+                    )}
+                    {issue.id === '8' && (
+                      <div style={{
+                        position: 'absolute',
+                        top: '15%',
+                        left: '1.5%',
+                        backgroundColor: '#FFFFFF',
+                        padding: '2px 10px',
+                        zIndex: 10,
+                        boxShadow: '0 4px 10px rgba(0,0,0,0.05)'
+                      }}>
+                        <span style={{ 
+                          fontSize: '8px', 
+                          letterSpacing: '0.2em', 
+                          textTransform: 'uppercase', 
+                          color: '#1e3a8a',
+                          fontWeight: 600,
+                          whiteSpace: 'nowrap',
+                          fontFamily: "'Playfair Display', serif"
+                        }}>
+                          Volume 8
+                        </span>
+                      </div>
+                    )}
+                    {issue.id === '8' && (
+                      <div style={{
+                        position: 'absolute',
+                        bottom: '1%',
+                        left: '0',
+                        right: '0',
+                        backgroundColor: '#FFFFFF',
+                        padding: '12px 1rem',
+                        textAlign: 'center',
+                        zIndex: 10,
+                        boxShadow: '0 10px 25px rgba(0,0,0,0.1)'
+                      }}>
+                        <span style={{ 
+                          fontSize: '20px', 
+                          letterSpacing: '0.4em', 
+                          textTransform: 'uppercase', 
+                          color: '#1e3a8a',
+                          fontWeight: 600,
+                          whiteSpace: 'nowrap',
+                          fontFamily: "'Playfair Display', serif"
+                        }}>
+                          The Room
+                        </span>
+                      </div>
+                    )}
                     {/* Barcode Patch for Issue 10 */}
                     {issue.id === '10' && (
                       <div style={{
@@ -239,7 +644,7 @@ const Archive: React.FC = () => {
                         left: '0.5%',
                         width: '35%',
                         height: '16%',
-                        background: 'radial-gradient(circle at 30% 30%, #4A3222 0%, #2D1B10 70%, #1A120B 100%)',
+                        backgroundColor: '#000000',
                         opacity: 1,
                         zIndex: 10,
                         boxShadow: 'inset 0 0 15px rgba(0,0,0,0.4)',
@@ -250,7 +655,7 @@ const Archive: React.FC = () => {
                         padding: '0.5rem'
                       }}>
                         <span style={{ 
-                          color: 'rgba(255,255,255,0.7)', 
+                          color: '#FFFFFF', 
                           fontSize: '9px', 
                           letterSpacing: '0.4em', 
                           textTransform: 'uppercase', 
@@ -261,6 +666,45 @@ const Archive: React.FC = () => {
                         }}>
                           The Blueprint
                         </span>
+                      </div>
+                    )}
+                    {/* Patch for Issue 07 */}
+                    {issue.id === '7' && (
+                      <div style={{
+                        position: 'absolute',
+                        top: '25.5%',
+                        right: '2%',
+                        backgroundColor: 'black',
+                        padding: '6px 10px',
+                        zIndex: 10,
+                      }}>
+                        <div style={{
+                          display: 'flex',
+                          flexDirection: 'column',
+                          alignItems: 'flex-end',
+                          gap: '2px'
+                        }}>
+                          <span style={{ 
+                            color: '#F5F1E8', 
+                            fontSize: '8px', 
+                            letterSpacing: '0.2em', 
+                            textTransform: 'uppercase', 
+                            fontWeight: 600,
+                            whiteSpace: 'nowrap',
+                          }}>
+                            The Art of Clean
+                          </span>
+                          <span style={{ 
+                            color: '#F5F1E8', 
+                            fontSize: '6px', 
+                            letterSpacing: '0.3em', 
+                            fontWeight: 400,
+                            whiteSpace: 'nowrap',
+                            opacity: 0.7
+                          }}>
+                            Edges Are Everything
+                          </span>
+                        </div>
                       </div>
                     )}
                     {/* Decorative Label for Issue 03 */}
