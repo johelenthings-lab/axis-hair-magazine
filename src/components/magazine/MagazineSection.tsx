@@ -179,8 +179,13 @@ const MagazineSection: React.FC<MagazineSectionProps> = ({
               {subtitle || 'Editorial'}
             </span>
           </div>
-          <h2 className={`${fontClass} ${id === 'pulse' ? 'text-2xl md:text-4xl lg:text-5xl' : 'text-3xl md:text-5xl lg:text-6xl'} leading-[1.1] mb-8 normal-case tracking-tight`}>
-            {title}
+          <h2 className={`${fontClass} ${id === 'pulse' ? 'text-2xl md:text-4xl lg:text-5xl' : 'text-3xl md:text-5xl lg:text-6xl'} leading-[1.1] mb-8 normal-case tracking-tight whitespace-pre-line`}>
+            {title.includes('\n') ? (
+              <>
+                <span className="block text-[10px] md:text-xs tracking-[0.5em] uppercase text-gold/60 mb-4 font-sans font-bold">{title.split('\n')[0]}</span>
+                <span className="block">{title.split('\n')[1]}</span>
+              </>
+            ) : title}
           </h2>
         </motion.div>
 
@@ -243,7 +248,7 @@ const MagazineSection: React.FC<MagazineSectionProps> = ({
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 1.2, delay: 0.4 }}
-            className={`mt-24 md:mt-32 pt-24 md:pt-32 border-t border-gold/10 w-full max-w-[1200px] mx-auto`}
+            className={`mt-24 md:mt-32 pt-24 md:pt-32 ${id === 'feature-segment' ? 'bg-white/5 border border-white/5 p-12 md:p-24 rounded-sm' : 'border-t border-gold/10'} w-full max-w-[1400px] mx-auto`}
           >
             {/* Render the subheader first if it's the start of this section */}
             {content.findIndex(p => p.startsWith('### ')) !== -1 && (
@@ -252,7 +257,7 @@ const MagazineSection: React.FC<MagazineSectionProps> = ({
               </div>
             )}
 
-            <div className={`grid gap-x-12 gap-y-20 ${layoutVariant === 'grid' ? 'grid-cols-1 md:grid-cols-3' : 'grid-cols-1'}`}>
+            <div className={`grid gap-x-12 gap-y-8 ${id === 'feature-segment' ? 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3' : (layoutVariant === 'grid' ? 'grid-cols-1 md:grid-cols-3' : 'grid-cols-1')}`}>
               {content.slice(content.findIndex(p => p.startsWith('### ')) + 1).map((paragraph, index) => (
                 <React.Fragment key={index}>
                   {renderContent(paragraph)}
