@@ -11,7 +11,7 @@ interface MagazineSectionProps {
   number: string;
   theme?: 'light' | 'dark';
   layout?: 'left' | 'right' | 'center' | 'full';
-  layoutVariant?: 'cinematic' | 'staggered' | 'grid' | 'default';
+  layoutVariant?: 'cinematic' | 'staggered' | 'grid' | 'education' | 'default';
   fontOption?: 1 | 2 | 3;
 }
 
@@ -24,12 +24,13 @@ const MagazineSection: React.FC<MagazineSectionProps> = ({
   const isFinancials = id === 'financials' || title.toLowerCase().includes('financials');
   const isCinematic = layoutVariant === 'cinematic' || isFinancials || id === 'feature-segment' || id === 'the-direction';
   const isStaggered = layoutVariant === 'staggered' || id === 'pulse' || (id === 'the-chair' && !isFinancials) || id === 'technology-shift';
+  const isEducation = layoutVariant === 'education';
   
   const isCentered = layout === 'center' || isFounderNote;
   const fontClass = `font-option-${fontOption}`;
 
   // Spacing and width logic
-  const sectionMaxWidth = isFinancials ? 'max-w-none' : isCinematic ? 'max-w-[1600px]' : isStaggered ? 'max-w-[1300px]' : 'max-w-[1100px]';
+  const sectionMaxWidth = isFinancials ? 'max-w-none' : isCinematic ? 'max-w-[1600px]' : (isStaggered || isEducation) ? 'max-w-[1300px]' : 'max-w-[1100px]';
   const verticalSpacing = isFounderNote || isCinematic ? 'py-32 md:py-48' : 'py-24 md:py-32';
 
   const renderContent = (text: string) => {
@@ -51,6 +52,35 @@ const MagazineSection: React.FC<MagazineSectionProps> = ({
             {parseBold(text.replace('- ', ''))}
           </span>
         </div>
+      );
+    }
+
+    // Handle [SIDE_IMAGE]
+    if (text.startsWith('[SIDE_IMAGE]')) {
+      const parts = text.replace('[SIDE_IMAGE] ', '').split(' | ');
+      const imgPath = parts[0];
+      const type = parts[1]; // phone or laptop
+      
+      return (
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1.2 }}
+          className={`my-16 ${type === 'phone' ? 'max-w-[400px]' : 'max-w-full'} mx-auto`}
+        >
+          <div className="relative group overflow-hidden rounded-sm shadow-2xl border border-black/5 bg-white">
+            <img 
+              src={imgPath} 
+              alt={type} 
+              className="w-full h-auto block transition-transform duration-1000 group-hover:scale-105" 
+            />
+            <div className="absolute inset-0 bg-gold/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
+          </div>
+          <p className="mt-4 text-[9px] tracking-[0.4em] uppercase opacity-30 text-center font-sans">
+            {type === 'phone' ? 'Mobile interface preview' : 'Desktop dashboard view'}
+          </p>
+        </motion.div>
       );
     }
 
@@ -155,7 +185,7 @@ const MagazineSection: React.FC<MagazineSectionProps> = ({
         </motion.div>
 
         {/* Layout Wrapper */}
-        <div className={`flex flex-col ${isStaggered && !isCentered ? 'md:flex-row md:items-start md:gap-24' : 'items-center'} ${isFinancials ? 'w-full' : ''}`}>
+        <div className={`flex flex-col ${(isStaggered || isEducation) && !isCentered ? 'md:flex-row md:items-start md:gap-24' : 'items-center'} ${isFinancials ? 'w-full' : ''}`}>
           
           {/* Image Content */}
           {imagePath && (
@@ -164,7 +194,7 @@ const MagazineSection: React.FC<MagazineSectionProps> = ({
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 1.5 }}
-              className={`mb-20 overflow-hidden w-full ${isStaggered && !isCentered ? 'md:w-3/5 md:mb-0' : ''} ${isFinancials ? 'relative h-[70vh] md:h-[85vh]' : ''}`}
+              className={`mb-20 overflow-hidden w-full ${(isStaggered || isEducation) && !isCentered ? 'md:w-3/5 md:mb-0' : ''} ${isFinancials ? 'relative h-[70vh] md:h-[85vh]' : ''}`}
             >
               <img 
                 src={imagePath} 
@@ -181,7 +211,7 @@ const MagazineSection: React.FC<MagazineSectionProps> = ({
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 1.2, delay: 0.2 }}
-            className={`${isFounderNote ? 'space-y-6' : 'space-y-12'} ${isCentered ? 'mx-auto' : 'mx-auto md:mx-0'} ${isStaggered && !isCentered ? 'md:w-2/5 md:pt-4' : ''} ${isFinancials ? 'pb-24 pt-12' : ''}`}
+            className={`${isFounderNote ? 'space-y-6' : 'space-y-12'} ${isCentered ? 'mx-auto' : 'mx-auto md:mx-0'} ${(isStaggered || isEducation) && !isCentered ? 'md:w-2/5 md:pt-4' : ''} ${isFinancials ? 'pb-24 pt-12' : ''}`}
             style={{ maxWidth: isFounderNote ? '600px' : isFinancials ? '900px' : '750px' }}
           >
             {content.slice(0, content.findIndex(p => p.startsWith('### ')) === -1 ? content.length : content.findIndex(p => p.startsWith('### '))).map((paragraph, index) => (
