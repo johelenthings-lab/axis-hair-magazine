@@ -110,7 +110,7 @@ const IssueTemplate: React.FC = () => {
     {
       id: 'the-chair-financials',
       number: '04',
-      title: 'Building Beyond the Chair',
+      title: 'Building Beyond\nthe Chair',
       subtitle: 'THE CHAIR: FINANCIALS',
       imagePath: chairImg,
       content: [
@@ -150,7 +150,7 @@ const IssueTemplate: React.FC = () => {
     {
       id: 'technology-consultation-shift',
       number: '05',
-      title: 'Smarter Tools for the Modern Chair',
+      title: 'Smarter Tools\nfor the Modern Chair',
       subtitle: 'Technology & Consultation Shift',
       imagePath: techImg,
       content: [

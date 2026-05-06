@@ -179,7 +179,7 @@ const MagazineSection: React.FC<MagazineSectionProps> = ({
               {subtitle || 'Editorial'}
             </span>
           </div>
-          <h2 className={`${fontClass} ${['pulse', 'the-direction'].includes(id) ? 'text-2xl md:text-4xl lg:text-5xl' : 'text-3xl md:text-5xl lg:text-6xl'} leading-[1.1] mb-8 normal-case tracking-tight whitespace-pre-line`}>
+          <h2 className={`${fontClass} ${['pulse', 'the-direction', 'the-chair-financials', 'technology-consultation-shift'].includes(id) ? 'text-2xl md:text-4xl lg:text-5xl' : 'text-3xl md:text-5xl lg:text-6xl'} leading-[1.1] mb-8 normal-case tracking-tight whitespace-pre-line`}>
             {title.includes('\n') ? (
               <>
                 <span className="block text-[10px] md:text-xs tracking-[0.5em] uppercase text-gold/60 mb-4 font-sans font-bold">{title.split('\n')[0]}</span>
