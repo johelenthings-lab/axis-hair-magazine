@@ -314,7 +314,7 @@ const IssueTemplate: React.FC = () => {
         <div className="flex flex-col items-center gap-4">
           <p className="text-[10px] tracking-[0.6em] uppercase opacity-40 font-sans">Jump to Section</p>
           <div className="relative group">
-            <select 
+            <select
               className="bg-transparent border-none text-gold font-serif italic text-xl md:text-2xl focus:ring-0 cursor-pointer text-center appearance-none px-12"
               onChange={handleSectionJump}
               defaultValue=""
@@ -323,11 +323,11 @@ const IssueTemplate: React.FC = () => {
               <option value="top" className="text-black bg-[#F5F1E8] font-sans text-sm uppercase tracking-widest py-2">Top of Issue</option>
               {sections.map((s) => (
                 <option key={s.id} value={s.id} className="text-black bg-[#F5F1E8] font-sans text-sm uppercase tracking-widest py-2">
-                  {s.id === 'founders-note' ? 'Founder’s Note' : 
-                   s.id === 'pulse' ? 'The Pulse' : 
-                   s.id === 'the-chair-financials' ? 'The Chair: Financials' :
-                   s.id === 'technology-consultation-shift' ? 'Technology & Consultation Shift' :
-                   s.subtitle || s.title}
+                  {s.id === 'founders-note' ? 'Founder’s Note' :
+                    s.id === 'pulse' ? 'The Pulse' :
+                      s.id === 'the-chair-financials' ? 'The Chair: Financials' :
+                        s.id === 'technology-consultation-shift' ? 'Technology & Consultation Shift' :
+                          s.subtitle || s.title}
                 </option>
               ))}
             </select>
@@ -393,11 +393,11 @@ const IssueTemplate: React.FC = () => {
                   >
                     <span className="w-0 group-hover/item:w-4 h-[1px] bg-gold transition-all duration-500 overflow-hidden inline-block" />
                     <span className="group-hover/item:translate-x-2 transition-transform duration-500">
-                      {s.id === 'founders-note' ? 'Founder’s Note' : 
-                       s.id === 'pulse' ? 'The Pulse' : 
-                       s.id === 'the-chair-financials' ? 'The Chair: Financials' :
-                       s.id === 'technology-consultation-shift' ? 'Technology & Consultation Shift' :
-                       s.subtitle || s.title}
+                      {s.id === 'founders-note' ? 'Founder’s Note' :
+                        s.id === 'pulse' ? 'The Pulse' :
+                          s.id === 'the-chair-financials' ? 'The Chair: Financials' :
+                            s.id === 'technology-consultation-shift' ? 'Technology & Consultation Shift' :
+                              s.subtitle || s.title}
                     </span>
                   </button>
                 ))}
@@ -405,7 +405,7 @@ const IssueTemplate: React.FC = () => {
             </motion.div>
           )}
         </AnimatePresence>
-        
+
         <button
           onClick={() => setIsNavOpen(!isNavOpen)}
           className="bg-black text-white px-8 py-4 rounded-full text-[10px] tracking-[0.4em] uppercase hover:bg-gold transition-all duration-700 shadow-2xl flex items-center gap-4 group"
