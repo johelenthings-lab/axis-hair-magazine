@@ -179,7 +179,7 @@ const MagazineSection: React.FC<MagazineSectionProps> = ({
               {subtitle || 'Editorial'}
             </span>
           </div>
-          <h2 className={`${fontClass} text-3xl md:text-5xl lg:text-6xl leading-[1.1] mb-8 normal-case tracking-tight`}>
+          <h2 className={`${fontClass} ${id === 'pulse' ? 'text-2xl md:text-4xl lg:text-5xl' : 'text-3xl md:text-5xl lg:text-6xl'} leading-[1.1] mb-8 normal-case tracking-tight`}>
             {title}
           </h2>
         </motion.div>

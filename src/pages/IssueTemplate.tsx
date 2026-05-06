@@ -57,13 +57,17 @@ const IssueTemplate: React.FC = () => {
     {
       id: 'pulse',
       number: '01',
-      title: 'The Industry Is Moving From Service to Experience',
+      title: 'The Quiet Shift Behind the Chair',
       subtitle: 'THE PULSE',
       imagePath: pulseImg,
       content: [
-        'Clients are no longer booking only a cut, color, style, or grooming service. They are booking confidence, clarity, trust, and a full professional experience.',
-        'Today’s client often arrives with screenshots, saved videos, celebrity references, social media inspiration, and sometimes ideas that do not translate cleanly to their hair, lifestyle, or maintenance level. The modern stylist or barber is no longer only performing the service. They are translating the client’s vision into something realistic, wearable, personal, and worth returning for.',
-        'That shift changes the value of the consultation. It is no longer just the opening conversation. It is the moment where expectations are shaped, confidence is built, and the professional begins leading the experience.'
+        'The industry is not only changing in what clients ask for. It is changing in how they decide.',
+        'Clients are walking in with screenshots, saved videos, filtered references, and a clearer idea of how they want to feel when they leave. They are not just booking a cut, color, shape-up, or grooming service. They are looking for confidence, clarity, and a result that feels like it belongs to them.',
+        'That changes the value of the consultation.',
+        'The modern chair is no longer just where the service happens. It is where trust gets built, expectations get shaped, and the professional begins guiding the client from idea to decision.',
+        'That is the quiet edge.',
+        'It is not louder work. It is cleaner thinking. Sharper communication. Better preparation. More intentional service.',
+        'The professionals who understand that shift are no longer just reacting to what clients bring in. They are helping clients see what actually works before the service begins.'
       ],
       layout: 'left' as const,
       theme: 'dark' as const
