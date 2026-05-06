@@ -137,50 +137,61 @@ const Archive: React.FC = () => {
                       }}
                       className="group-hover:opacity-90"
                     />
-                    {/* Patch for Issue 11 - Hello Color Labels */}
+                    {/* Localized Editorial Metadata for Issue 11 */}
                     {issue.id === '11' && (
-                      <>
+                      <div style={{
+                        position: 'absolute',
+                        top: '23%',
+                        left: '0',
+                        right: '0',
+                        display: 'flex',
+                        justifyContent: 'space-between',
+                        alignItems: 'center',
+                        zIndex: 10,
+                        pointerEvents: 'none'
+                      }}>
+                        {/* Left Metadata Patch */}
                         <div style={{
-                          position: 'absolute',
-                          top: '25.5%',
-                          left: '0.2%',
-                          backgroundColor: '#FFFFFF',
-                          padding: '0px 2px',
-                          zIndex: 10,
+                          padding: '12px 2.5rem 12px 0.25rem',
+                          background: 'radial-gradient(ellipse at left, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0) 75%)',
+                          display: 'flex',
+                          alignItems: 'center'
                         }}>
                           <span style={{ 
-                            fontSize: '7.5px', 
-                            letterSpacing: '0.4em', 
+                            fontSize: '7px', 
+                            letterSpacing: '0.5em', 
                             textTransform: 'uppercase', 
-                            color: '#000000',
-                            fontWeight: 700,
+                            color: '#F5F1E8',
+                            fontWeight: 300,
+                            fontFamily: "'Playfair Display', serif",
                             whiteSpace: 'nowrap',
-                            lineHeight: 1
+                            opacity: 0.9
                           }}>
-                            Hello Color
+                            GLOBAL TRENDS
                           </span>
                         </div>
+
+                        {/* Right Metadata Patch */}
                         <div style={{
-                          position: 'absolute',
-                          top: '25.5%',
-                          right: '0.2%',
-                          backgroundColor: '#FFFFFF',
-                          padding: '0px 16px',
-                          zIndex: 10,
+                          padding: '12px 0.25rem 12px 2.5rem',
+                          background: 'radial-gradient(ellipse at right, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0) 75%)',
+                          display: 'flex',
+                          alignItems: 'center'
                         }}>
                           <span style={{ 
-                            fontSize: '7.5px', 
-                            letterSpacing: '0.4em', 
+                            fontSize: '7px', 
+                            letterSpacing: '0.5em', 
                             textTransform: 'uppercase', 
-                            color: '#000000',
-                            fontWeight: 700,
+                            color: '#F5F1E8',
+                            fontWeight: 300,
+                            fontFamily: "'Playfair Display', serif",
                             whiteSpace: 'nowrap',
-                            lineHeight: 1
+                            opacity: 0.9
                           }}>
-                            Volume 11
+                            VOLUME 11
                           </span>
                         </div>
-                      </>
+                      </div>
                     )}
                     {/* Patch for Issue 10 - Volume Label */}
                     {issue.id === '10' && (
@@ -350,6 +361,92 @@ const Archive: React.FC = () => {
                         </span>
                       </div>
                     )}
+
+
+                    {/* ISSUE 12: THE THREAD - PREMIUM EDITORIAL REBUILD */}
+                    {issue.id === '12' && (
+                      <div style={{
+                        position: 'absolute',
+                        inset: 0,
+                        display: 'flex',
+                        flexDirection: 'column',
+                        alignItems: 'center',
+                        paddingTop: '2.2rem',
+                        zIndex: 10,
+                        pointerEvents: 'none'
+                      }}>
+                        {/* Masthead */}
+                        <div style={{ textAlign: 'center', width: '100%', marginBottom: 'auto' }}>
+                          <h2 style={{ 
+                            fontSize: '3.3rem', 
+                            letterSpacing: '0.18em', 
+                            color: '#FFFFFF', 
+                            fontWeight: 300,
+                            fontFamily: "'Playfair Display', serif",
+                            textShadow: '0 2px 25px rgba(0,0,0,0.3)',
+                            paddingLeft: '0.18em',
+                            whiteSpace: 'nowrap',
+                            lineHeight: 1
+                          }}>
+                            AXIS HAIR<span style={{ fontSize: '12px', verticalAlign: 'top', marginLeft: '2px' }}>™</span>
+                          </h2>
+                          <p style={{ 
+                            fontSize: '7.5px', 
+                            letterSpacing: '0.65em', 
+                            color: 'rgba(255,255,255,0.95)', 
+                            marginTop: '12px', 
+                            textTransform: 'uppercase',
+                            fontWeight: 300,
+                            paddingLeft: '0.65em',
+                            whiteSpace: 'nowrap'
+                          }}>
+                            The Industry Edit
+                          </p>
+                        </div>
+
+                        {/* Stretched Feature Credit */}
+                        <div style={{ 
+                          position: 'absolute',
+                          bottom: '3%',
+                          left: '0',
+                          right: '0',
+                          textAlign: 'center'
+                        }}>
+                          <p style={{ 
+                            fontSize: '4.6px', 
+                            letterSpacing: '0.45em', 
+                            color: '#FFFFFF',
+                            fontFamily: "'Playfair Display', serif",
+                            opacity: 0.9,
+                            textTransform: 'uppercase',
+                            whiteSpace: 'nowrap',
+                            fontWeight: 700
+                          }}>
+                            Inspired by the artistry of Elisabeth Anayes Niouky
+                          </p>
+                        </div>
+
+                        {/* Issue Title */}
+                        <div style={{ 
+                          position: 'absolute',
+                          bottom: '26%',
+                          left: '1.5rem'
+                        }}>
+                          <span style={{ 
+                            fontSize: '12px', 
+                            letterSpacing: '0.52em', 
+                            textTransform: 'uppercase', 
+                            color: '#FFFFFF', 
+                            fontWeight: 400,
+                            fontFamily: "'Playfair Display', serif",
+                            opacity: 0.95
+                          }}>
+                            The Thread
+                          </span>
+                        </div>
+                      </div>
+                    )}
+
                     {/* Patch for Issue 07 */}
                     {issue.id === '7' && (
                       <div style={{
@@ -457,50 +554,61 @@ const Archive: React.FC = () => {
                         transition: 'all 700ms',
                       }}
                     />
-                    {/* Patch for Issue 11 - Hello Color Labels */}
+                    {/* Localized Editorial Metadata for Issue 11 */}
                     {issue.id === '11' && (
-                      <>
+                      <div style={{
+                        position: 'absolute',
+                        top: '23%',
+                        left: '0',
+                        right: '0',
+                        display: 'flex',
+                        justifyContent: 'space-between',
+                        alignItems: 'center',
+                        zIndex: 10,
+                        pointerEvents: 'none'
+                      }}>
+                        {/* Left Metadata Patch */}
                         <div style={{
-                          position: 'absolute',
-                          top: '25.5%',
-                          left: '0.2%',
-                          backgroundColor: '#FFFFFF',
-                          padding: '0px 2px',
-                          zIndex: 10,
+                          padding: '12px 2.5rem 12px 0.25rem',
+                          background: 'radial-gradient(ellipse at left, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0) 75%)',
+                          display: 'flex',
+                          alignItems: 'center'
                         }}>
                           <span style={{ 
-                            fontSize: '7.5px', 
-                            letterSpacing: '0.4em', 
+                            fontSize: '7px', 
+                            letterSpacing: '0.5em', 
                             textTransform: 'uppercase', 
-                            color: '#000000',
-                            fontWeight: 700,
+                            color: '#F5F1E8',
+                            fontWeight: 300,
+                            fontFamily: "'Playfair Display', serif",
                             whiteSpace: 'nowrap',
-                            lineHeight: 1
+                            opacity: 0.9
                           }}>
-                            Hello Color
+                            GLOBAL TRENDS
                           </span>
                         </div>
+
+                        {/* Right Metadata Patch */}
                         <div style={{
-                          position: 'absolute',
-                          top: '25.5%',
-                          right: '0.2%',
-                          backgroundColor: '#FFFFFF',
-                          padding: '0px 16px',
-                          zIndex: 10,
+                          padding: '12px 0.25rem 12px 2.5rem',
+                          background: 'radial-gradient(ellipse at right, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0) 75%)',
+                          display: 'flex',
+                          alignItems: 'center'
                         }}>
                           <span style={{ 
-                            fontSize: '7.5px', 
-                            letterSpacing: '0.4em', 
+                            fontSize: '7px', 
+                            letterSpacing: '0.5em', 
                             textTransform: 'uppercase', 
-                            color: '#000000',
-                            fontWeight: 700,
+                            color: '#F5F1E8',
+                            fontWeight: 300,
+                            fontFamily: "'Playfair Display', serif",
                             whiteSpace: 'nowrap',
-                            lineHeight: 1
+                            opacity: 0.9
                           }}>
-                            Volume 11
+                            VOLUME 11
                           </span>
                         </div>
-                      </>
+                      </div>
                     )}
                     {/* Patch for Issue 10 - Volume Label */}
                     {issue.id === '10' && (
@@ -668,6 +776,90 @@ const Archive: React.FC = () => {
                         </span>
                       </div>
                     )}
+                    {/* ISSUE 12: THE THREAD - PREMIUM EDITORIAL REBUILD */}
+                    {issue.id === '12' && (
+                      <div style={{
+                        position: 'absolute',
+                        inset: 0,
+                        display: 'flex',
+                        flexDirection: 'column',
+                        alignItems: 'center',
+                        paddingTop: '2.2rem',
+                        zIndex: 10,
+                        pointerEvents: 'none'
+                      }}>
+                        {/* Masthead */}
+                        <div style={{ textAlign: 'center', width: '100%', marginBottom: 'auto' }}>
+                          <h2 style={{ 
+                            fontSize: '3.3rem', 
+                            letterSpacing: '0.18em', 
+                            color: '#FFFFFF', 
+                            fontWeight: 300,
+                            fontFamily: "'Playfair Display', serif",
+                            textShadow: '0 2px 25px rgba(0,0,0,0.3)',
+                            paddingLeft: '0.18em',
+                            whiteSpace: 'nowrap',
+                            lineHeight: 1
+                          }}>
+                            AXIS HAIR<span style={{ fontSize: '12px', verticalAlign: 'top', marginLeft: '2px' }}>™</span>
+                          </h2>
+                          <p style={{ 
+                            fontSize: '7.5px', 
+                            letterSpacing: '0.65em', 
+                            color: 'rgba(255,255,255,0.95)', 
+                            marginTop: '12px', 
+                            textTransform: 'uppercase',
+                            fontWeight: 300,
+                            paddingLeft: '0.65em',
+                            whiteSpace: 'nowrap'
+                          }}>
+                            The Industry Edit
+                          </p>
+                        </div>
+
+                        {/* Stretched Feature Credit */}
+                        <div style={{ 
+                          position: 'absolute',
+                          bottom: '3%',
+                          left: '0',
+                          right: '0',
+                          textAlign: 'center'
+                        }}>
+                          <p style={{ 
+                            fontSize: '4.6px', 
+                            letterSpacing: '0.45em', 
+                            color: '#FFFFFF',
+                            fontFamily: "'Playfair Display', serif",
+                            opacity: 0.9,
+                            textTransform: 'uppercase',
+                            whiteSpace: 'nowrap',
+                            fontWeight: 700
+                          }}>
+                            Inspired by the artistry of Elisabeth Anayes Niouky
+                          </p>
+                        </div>
+
+                        {/* Issue Title */}
+                        <div style={{ 
+                          position: 'absolute',
+                          bottom: '26%',
+                          left: '1.5rem'
+                        }}>
+                          <span style={{ 
+                            fontSize: '12px', 
+                            letterSpacing: '0.52em', 
+                            textTransform: 'uppercase', 
+                            color: '#FFFFFF', 
+                            fontWeight: 400,
+                            fontFamily: "'Playfair Display', serif",
+                            opacity: 0.95
+                          }}>
+                            The Thread
+                          </span>
+                        </div>
+                      </div>
+                    )}
+
                     {/* Patch for Issue 07 */}
                     {issue.id === '7' && (
                       <div style={{
@@ -707,30 +899,7 @@ const Archive: React.FC = () => {
                         </div>
                       </div>
                     )}
-                    {/* Decorative Label for Issue 03 */}
-                    {issue.id === '3' && (
-                      <div style={{
-                        position: 'absolute',
-                        bottom: '0',
-                        left: '0',
-                        right: '0',
-                        backgroundColor: '#000000',
-                        padding: '1.5rem 1rem',
-                        textAlign: 'center',
-                        zIndex: 5
-                      }}>
-                        <span style={{ 
-                          fontSize: '18px', 
-                          letterSpacing: '0.4em', 
-                          textTransform: 'uppercase', 
-                          color: '#FFFFFF',
-                          fontWeight: 500,
-                          fontFamily: "'Playfair Display', serif"
-                        }}>
-                          The Global Line
-                        </span>
-                      </div>
-                    )}
+
                   </div>
                 )}
               </div>
