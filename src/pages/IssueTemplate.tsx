@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import CoverHero from '../components/magazine/CoverHero';
 import MagazineSection from '../components/magazine/MagazineSection';
 
@@ -11,6 +12,13 @@ import techImg from "../assets/images/april/april-06-technology-consultation-shi
 import featureImg from "../assets/images/april/april-07-feature-segment.png";
 import directionImg from "../assets/images/april/april-08-the-direction.png";
 import issue01 from "../assets/images/issue-01.png";
+// Trend Showcase Assets
+import pixieImg from "../assets/images/april/trend-cards/precision-pixie.png";
+import bobImg from "../assets/images/april/trend-cards/sculpted-bob.png";
+import fringeImg from "../assets/images/april/trend-cards/textured-fringe.png";
+import mulletImg from "../assets/images/april/trend-cards/burst-fade.png";
+import lineupImg from "../assets/images/april/trend-cards/lineup-taper.png";
+import curlsImg from "../assets/images/april/trend-cards/low-taper-curls.png";
 
 const IssueTemplate: React.FC = () => {
   // FONT TEST OPTIONS: 1 (Baseline), 2 (Playfair), 3 (DM Serif)
@@ -61,15 +69,21 @@ const IssueTemplate: React.FC = () => {
     {
       id: 'trend-layers',
       number: '02',
-      title: 'Fast Trends Need Smarter Translation',
-      subtitle: 'TREND LAYERS',
+      title: 'The Looks Taking Over Right Now',
+      subtitle: 'Trend Layers',
       imagePath: trendImg,
       content: [
-        'Trends move fast now. A look can travel from a celebrity post to a client’s camera roll before the day is over. TikTok, Instagram, Pinterest, runway beauty, street style, and AI-generated inspiration are all shaping what clients ask for.',
-        'But trend awareness is only the beginning. The real skill is knowing what fits the person in the chair. Face shape, density, texture, color history, lifestyle, budget, confidence, and maintenance all matter. A trend that looks effortless online may require planning, upkeep, and professional judgment in real life.',
-        'This is where tools like AXIS HAIR™ can support the conversation. By helping organize inspiration and create clearer visual direction, the stylist or barber can guide the client toward options that feel exciting without losing reality.'
+        'Online, in the chair, and across social feeds, the cuts getting the most attention right now are sharp, clean, and impossible to ignore. These are the looks barbers are pushing with precision — on men and women alike.',
+        '### The Showcase',
+        `[TREND] ${pixieImg} | Precision Pixie | A close, clean cut with strong shape and zero softness where it does not belong. It is sharp, modern, and built to stand out without being loud.`,
+        `[TREND] ${bobImg} | Sculpted Crop Bob | Short, polished, and cut with real control. It carries edge, structure, and the kind of finish that turns a simple silhouette into a statement.`,
+        `[TREND] ${fringeImg} | Textured Fringe Crop | Messy in the right places, sharp everywhere else. This one keeps showing up because it feels youthful, fashion-forward, and easy to personalize.`,
+        `[TREND] ${mulletImg} | Burst Fade Mullet | Still making noise online and in the shop, but with cleaner execution than before. It is bold, expressive, and all about shape.`,
+        `[TREND] ${lineupImg} | Ultra-Clean Lineup Taper | Edges matter here. Crisp lines, controlled tapering, and a finish that looks fresh from every angle.`,
+        `[TREND] ${curlsImg} | Low Taper Curls | Natural texture with barber-level sharpness. This look wins because it keeps the shape soft up top and precise where it counts.`
       ],
-      layout: 'right' as const,
+      layout: 'center' as const,
+      layoutVariant: 'grid' as const,
       theme: 'light' as const
     },
     {
@@ -88,7 +102,7 @@ const IssueTemplate: React.FC = () => {
       theme: 'light' as const
     },
     {
-      id: 'the-chair',
+      id: 'the-chair-financials',
       number: '04',
       title: 'Building Beyond the Chair',
       subtitle: 'THE CHAIR: FINANCIALS',
@@ -128,16 +142,28 @@ const IssueTemplate: React.FC = () => {
       theme: 'dark' as const
     },
     {
-      id: 'technology-shift',
+      id: 'technology-consultation-shift',
       number: '05',
-      title: 'AI Belongs Beside the Stylist, Not Above Them',
-      subtitle: 'TECHNOLOGY & CONSULTATION SHIFT',
+      title: 'Smarter Tools, Stronger Decisions',
+      subtitle: 'Technology & Consultation Shift',
       imagePath: techImg,
       content: [
-        'The fear around AI is real, but the better conversation is about control. AI should not be treated as the artist, the expert, or the final decision-maker. The stylist or barber remains the professional. The tool supports the process.',
-        'Used well, AI can help with visualization, communication, organization, content creation, and client education. It can help a client compare directions. It can help a professional explain maintenance more clearly. It can help reduce confusion before the service begins. What it should not do is replace taste, training, intuition, or professional judgment.',
-        'Use AI to your advantage. Do not hand it your authority.',
-        'AXIS HAIR™ is built around that idea. It gives the professional a smarter way to guide the consultation, support client confidence, and create a more prepared experience without removing the human expertise that makes the service valuable.'
+        'Technology is not here to take the chair from the professional.',
+        'It is here to change what happens before the service begins.',
+        'The consultation used to rely heavily on conversation, memory, saved screenshots, and interpretation. A client would describe what they wanted. The stylist or barber would translate it. Somewhere between the words, the photos, the face shape, the hair history, and the client’s expectations, the real decision had to be made.',
+        'That still takes skill.',
+        'But now, the strongest professionals have more ways to make that decision clearer.',
+        'A visual preview can slow down confusion before it becomes correction. A better consultation flow can help the client understand what works, what does not, and what needs to be adjusted. Smarter tools can help organize the conversation so the professional is not carrying every detail alone.',
+        'That does not remove creativity.',
+        'It protects it.',
+        'Because creativity works better when the client is not guessing, the professional is not rushing, and the service begins with more certainty.',
+        'This is where tools like AXIS HAIR™ can support the process naturally. Not by replacing the eye, the hand, or the professional instinct, but by helping stylists and barbers show options, explain direction, reduce hesitation, and turn the consultation into something more visual and confident.',
+        'The key is balance.',
+        'Use technology to prepare, your eye to decide, your experience to adjust, and your creativity to finish the work in a way no tool can fully understand.',
+        'A client may come in with a screenshot, a trend, or an idea they saw online. But they still need someone who can translate that idea into something wearable, flattering, realistic, and worth paying for.',
+        'That is where the professional still leads.',
+        'The future of consultation is not less human.',
+        'It is more intentional.'
       ],
       layout: 'left' as const,
       theme: 'light' as const
@@ -175,6 +201,23 @@ const IssueTemplate: React.FC = () => {
     }
   ];
 
+  const [isNavOpen, setIsNavOpen] = useState(false);
+
+  const jumpToSection = (sectionId: string) => {
+    if (!sectionId) return;
+    const target = document.getElementById(sectionId);
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+    setIsNavOpen(false);
+  };
+
+  const handleSectionJump = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    jumpToSection(e.target.value);
+    // Reset selection for repeat use
+    e.target.value = "";
+  };
+
   return (
     <div className="bg-[#F5F1E8] text-[#111111] overflow-hidden">
       <CoverHero
@@ -192,6 +235,32 @@ const IssueTemplate: React.FC = () => {
           <p className="text-[11px] md:text-sm tracking-[0.6em] uppercase mb-8 opacity-60">THE INDUSTRY EDIT</p>
           <p className="text-[10px] tracking-[0.4em] uppercase mb-16 opacity-40">APRIL 2026</p>
           <h1 className={`text-6xl md:text-9xl ${fontClass} leading-none`}>THE QUIET EDGE</h1>
+        </div>
+      </div>
+
+      {/* Jump to Section Navigation */}
+      <div className="w-full flex justify-center py-12 bg-[#F5F1E8] border-t border-b border-black/5">
+        <div className="flex flex-col items-center gap-4">
+          <p className="text-[10px] tracking-[0.6em] uppercase opacity-40 font-sans">Jump to Section</p>
+          <div className="relative group">
+            <select 
+              className="bg-transparent border-none text-gold font-serif italic text-xl md:text-2xl focus:ring-0 cursor-pointer text-center appearance-none px-12"
+              onChange={handleSectionJump}
+              defaultValue=""
+            >
+              <option value="" disabled>Select a direction</option>
+              {sections.map((s) => (
+                <option key={s.id} value={s.id} className="text-black bg-[#F5F1E8] font-sans text-sm uppercase tracking-widest py-2">
+                  {s.id === 'founders-note' ? 'Founder’s Note' : 
+                   s.id === 'pulse' ? 'The Pulse' : 
+                   s.id === 'the-chair-financials' ? 'The Chair: Financials' :
+                   s.id === 'technology-consultation-shift' ? 'Technology & Consultation Shift' :
+                   s.subtitle || s.title}
+                </option>
+              ))}
+            </select>
+            <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-12 h-[1px] bg-gold/30 group-hover:w-24 transition-all duration-700" />
+          </div>
         </div>
       </div>
 
@@ -220,6 +289,51 @@ const IssueTemplate: React.FC = () => {
             />
           ))}
         </div>
+      </div>
+
+      {/* Floating Sections Navigation */}
+      <div className="fixed bottom-6 right-6 md:bottom-12 md:right-12 z-50 flex flex-col items-end gap-4">
+        <AnimatePresence>
+          {isNavOpen && (
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.9, y: 20 }}
+              className="bg-white/95 backdrop-blur-md border border-black/5 p-8 rounded-sm shadow-2xl w-72 mb-4"
+            >
+              <div className="flex flex-col gap-5">
+                <div className="flex justify-between items-center mb-2">
+                  <p className="text-[10px] tracking-[0.5em] uppercase opacity-40 font-sans">Issue Sections</p>
+                  <button onClick={() => setIsNavOpen(false)} className="text-[10px] uppercase opacity-20 hover:opacity-100 transition-opacity">Close</button>
+                </div>
+                {sections.map((s) => (
+                  <button
+                    key={s.id}
+                    onClick={() => jumpToSection(s.id)}
+                    className="text-left text-[10px] uppercase tracking-[0.3em] hover:text-gold transition-colors py-1 flex items-center group/item"
+                  >
+                    <span className="w-0 group-hover/item:w-4 h-[1px] bg-gold transition-all duration-500 overflow-hidden inline-block" />
+                    <span className="group-hover/item:translate-x-2 transition-transform duration-500">
+                      {s.id === 'founders-note' ? 'Founder’s Note' : 
+                       s.id === 'pulse' ? 'The Pulse' : 
+                       s.id === 'the-chair-financials' ? 'The Chair: Financials' :
+                       s.id === 'technology-consultation-shift' ? 'Technology & Consultation Shift' :
+                       s.subtitle || s.title}
+                    </span>
+                  </button>
+                ))}
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+        
+        <button
+          onClick={() => setIsNavOpen(!isNavOpen)}
+          className="bg-black text-white px-8 py-4 rounded-full text-[10px] tracking-[0.4em] uppercase hover:bg-gold transition-all duration-700 shadow-2xl flex items-center gap-4 group"
+        >
+          <span className="group-hover:translate-x-1 transition-transform">Sections</span>
+          <div className="w-1.5 h-1.5 bg-gold rounded-full" />
+        </button>
       </div>
 
       {/* Editorial Footer */}

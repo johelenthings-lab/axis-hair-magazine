@@ -54,6 +54,53 @@ const MagazineSection: React.FC<MagazineSectionProps> = ({
       );
     }
 
+    // Handle [TREND]
+    if (text.startsWith('[TREND]')) {
+      const parts = text.replace('[TREND] ', '').split(' | ');
+      const trendImagePath = parts[0];
+      const trendTitle = parts[1];
+      const trendCaption = parts[2];
+      return (
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="flex flex-col gap-6 group"
+        >
+          <div className={`overflow-hidden rounded-sm ${isDark ? 'bg-white/5' : 'bg-black/5'} aspect-[4/5]`}>
+            <img 
+              src={trendImagePath} 
+              alt={trendTitle}
+              className="w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-110"
+              loading="lazy"
+            />
+          </div>
+          <div className="space-y-3">
+            <h4 className="text-gold tracking-[0.2em] uppercase text-xs font-bold">{trendTitle}</h4>
+            <p className={`text-sm leading-relaxed font-light opacity-60 group-hover:opacity-100 transition-opacity duration-500 ${isDark ? 'text-white' : 'text-black'}`}>
+              {trendCaption}
+            </p>
+          </div>
+        </motion.div>
+      );
+    }
+
+    // Handle [BOX]
+    if (text.startsWith('[BOX]')) {
+      const parts = text.replace('[BOX] ', '').split(' : ');
+      const boxTitle = parts[0];
+      const boxBody = parts[1];
+      return (
+        <div className={`p-8 ${isDark ? 'bg-white/5 border-white/5' : 'bg-black/5 border-black/5'} border hover:border-gold/30 transition-all duration-700 rounded-sm group h-full flex flex-col`}>
+          <h4 className="text-gold tracking-[0.3em] uppercase text-[10px] mb-4 font-bold">{boxTitle}</h4>
+          <p className={`text-sm md:text-base leading-relaxed opacity-70 group-hover:opacity-100 transition-opacity ${isDark ? 'text-white' : 'text-black'}`}>
+            {parseBold(boxBody)}
+          </p>
+        </div>
+      );
+    }
+
     // Regular paragraph
     return (
       <p className={`text-base md:text-lg font-light leading-[1.8] ${
@@ -168,8 +215,15 @@ const MagazineSection: React.FC<MagazineSectionProps> = ({
             transition={{ duration: 1.2, delay: 0.4 }}
             className={`mt-24 md:mt-32 pt-24 md:pt-32 border-t border-gold/10 w-full max-w-[1200px] mx-auto`}
           >
-            <div className="grid grid-cols-1 gap-12">
-              {content.slice(content.findIndex(p => p.startsWith('### '))).map((paragraph, index) => (
+            {/* Render the subheader first if it's the start of this section */}
+            {content.findIndex(p => p.startsWith('### ')) !== -1 && (
+              <div className="mb-16">
+                {renderContent(content[content.findIndex(p => p.startsWith('### '))])}
+              </div>
+            )}
+
+            <div className={`grid gap-x-12 gap-y-20 ${layoutVariant === 'grid' ? 'grid-cols-1 md:grid-cols-3' : 'grid-cols-1'}`}>
+              {content.slice(content.findIndex(p => p.startsWith('### ')) + 1).map((paragraph, index) => (
                 <React.Fragment key={index}>
                   {renderContent(paragraph)}
                 </React.Fragment>
