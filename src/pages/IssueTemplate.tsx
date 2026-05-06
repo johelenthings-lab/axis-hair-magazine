@@ -238,18 +238,36 @@ const IssueTemplate: React.FC = () => {
     },
     {
       id: 'the-direction',
-      number: '07',
-      title: 'The Future Belongs to the Organized Creative',
+      number: '08',
+      title: 'What Comes Next\nIs Built With Intention',
       subtitle: 'THE DIRECTION',
       imagePath: directionImg,
       content: [
-        'Talent still matters. Craft still matters. The hand, the eye, the instinct, the timing, and the personal connection will always be at the center of beauty and grooming.',
-        'But the modern professional also needs systems. The next era belongs to stylists and barbers who can communicate clearly, use tools wisely, protect their time, and create client trust before, during, and after the appointment.',
-        'The future is not about choosing between creativity and technology. It is about using technology to protect creativity, strengthen the business, and improve the client experience.',
-        'This month, the practical move is simple: use AXIS HAIR™ to test one stronger consultation flow, one visual preview process, or one piece of client-ready content. Start small. Build the habit. Let the system support the craft.'
+        'The next phase of this industry will not belong only to the loudest professionals.',
+        'It will belong to the ones who are paying attention.',
+        'The ones who understand that the chair is no longer just a place where a service happens. It is where trust is built, where confidence is shaped, where culture shows up, where business decisions are made, and where the client begins to understand what is possible.',
+        'That is the quiet edge.',
+        'It is not about chasing every trend or using every tool just because it exists. It is about knowing what belongs in the work, what supports the client, what strengthens the business, and what helps the professional move with more clarity.',
+        'The strongest stylists and barbers will not be the ones who choose between craft and technology, culture and business, creativity and structure.',
+        'They will be the ones who learn how to carry all of it with intention.',
+        'A sharp consultation matters.',
+        'A clean finish matters.',
+        'A client who feels seen matters.',
+        'A price that reflects the value of the work matters.',
+        'A tool that helps the work travel further matters.',
+        'A standard that can be repeated matters.',
+        'This is where the future starts to separate itself.',
+        'Not in noise.',
+        'Not in rushing.',
+        'Not in doing more without direction.',
+        'But in sharper choices, better systems, stronger communication, cleaner execution, and a deeper understanding of what the client is really trusting the professional to do.',
+        'The work is still personal.',
+        'The craft still matters.',
+        'The chair still holds weight.',
+        'But what happens around the chair is changing.',
+        'And the professionals who understand that — fully — are the ones who will define what comes next.'
       ],
-      pullQuote: 'The future of hair is regenerative, architectural, and profoundly human.',
-      layout: 'center' as const,
+      layout: 'full' as const,
       theme: 'dark' as const
     }
   ];
@@ -272,7 +290,7 @@ const IssueTemplate: React.FC = () => {
   };
 
   return (
-    <div className="bg-[#F5F1E8] text-[#111111] overflow-hidden">
+    <div id="top" className="bg-[#F5F1E8] text-[#111111] overflow-hidden">
       <CoverHero
         title="THE QUIET EDGE"
         issueDate="APRIL 2026 | VOLUME 01"
@@ -302,6 +320,7 @@ const IssueTemplate: React.FC = () => {
               defaultValue=""
             >
               <option value="" disabled>Select a direction</option>
+              <option value="top" className="text-black bg-[#F5F1E8] font-sans text-sm uppercase tracking-widest py-2">Top of Issue</option>
               {sections.map((s) => (
                 <option key={s.id} value={s.id} className="text-black bg-[#F5F1E8] font-sans text-sm uppercase tracking-widest py-2">
                   {s.id === 'founders-note' ? 'Founder’s Note' : 
@@ -359,6 +378,13 @@ const IssueTemplate: React.FC = () => {
                   <p className="text-[10px] tracking-[0.5em] uppercase opacity-40 font-sans">Issue Sections</p>
                   <button onClick={() => setIsNavOpen(false)} className="text-[10px] uppercase opacity-20 hover:opacity-100 transition-opacity">Close</button>
                 </div>
+                <button
+                  onClick={() => jumpToSection('top')}
+                  className="text-left text-[10px] uppercase tracking-[0.3em] hover:text-gold transition-colors py-1 flex items-center group/item"
+                >
+                  <span className="w-0 group-hover/item:w-4 h-[1px] bg-gold transition-all duration-500 overflow-hidden inline-block" />
+                  <span className="group-hover/item:translate-x-2 transition-transform duration-500">Top of Issue</span>
+                </button>
                 {sections.map((s) => (
                   <button
                     key={s.id}
