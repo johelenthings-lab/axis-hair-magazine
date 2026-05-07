@@ -1,7 +1,8 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/layout/Header';
 import Home from './pages/Home';
-import IssueTemplate from './pages/IssueTemplate';
+import AprilIssue from './pages/AprilIssue';
+import MayIssue from './pages/MayIssue';
 import Archive from './pages/Archive';
 
 function App() {
@@ -11,7 +12,8 @@ function App() {
         <Header />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/issue/:id" element={<IssueTemplate />} />
+          <Route path="/issue/1" element={<AprilIssue />} />
+          <Route path="/issue/2" element={<MayIssue />} />
           <Route path="/archive" element={<Archive />} />
         </Routes>
       </div>

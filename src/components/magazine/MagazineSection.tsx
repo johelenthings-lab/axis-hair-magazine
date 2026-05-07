@@ -21,7 +21,7 @@ const MagazineSection: React.FC<MagazineSectionProps> = ({
 }) => {
   const isDark = theme === 'dark';
   const isFounderNote = id === 'founders-note';
-  const isFinancials = id === 'financials' || title.toLowerCase().includes('financials');
+  const isFinancials = id === 'financials' || id === 'the-chair-financials' || title.toLowerCase().includes('financials');
   const isCinematic = layoutVariant === 'cinematic' || isFinancials || id === 'feature-segment' || id === 'the-direction';
   const isStaggered = layoutVariant === 'staggered' || id === 'pulse' || (id === 'the-chair' && !isFinancials) || id === 'technology-shift';
   const isEducation = layoutVariant === 'education';
@@ -37,7 +37,9 @@ const MagazineSection: React.FC<MagazineSectionProps> = ({
     // Handle subheaders (### Headline)
     if (text.startsWith('### ')) {
       return (
-        <h3 className={`text-xl md:text-2xl font-bold tracking-[0.2em] uppercase text-gold mt-16 mb-8 border-b border-gold/10 pb-4 ${isCentered ? 'text-center' : 'text-left'}`}>
+        <h3 className={`text-xl md:text-2xl font-bold tracking-[0.2em] uppercase mt-16 mb-8 border-b pb-4 ${isCentered ? 'text-center' : 'text-left'} ${
+          isFinancials ? 'text-[#7A1F1F] border-[#7A1F1F]/20' : 'text-gold border-gold/10'
+        }`}>
           {text.replace('### ', '')}
         </h3>
       );
@@ -47,7 +49,7 @@ const MagazineSection: React.FC<MagazineSectionProps> = ({
     if (text.startsWith('- ')) {
       return (
         <div className={`flex gap-4 mb-4 items-start group ${isCentered ? 'justify-center' : ''}`}>
-          <span className="text-gold mt-1.5">•</span>
+          <span className={`${isFinancials ? 'text-[#7A1F1F]' : 'text-gold'} mt-1.5`}>•</span>
           <span className={`flex-1 ${isCentered ? 'text-center' : 'text-left'}`}>
             {parseBold(text.replace('- ', ''))}
           </span>
@@ -121,21 +123,36 @@ const MagazineSection: React.FC<MagazineSectionProps> = ({
       const parts = text.replace('[BOX] ', '').split(' : ');
       const boxTitle = parts[0];
       const boxBody = parts[1];
+      
+      // Financials Specific Card Styling
+      const isTakeaway = boxTitle.toLowerCase().includes('this week');
+      const isEditorialNote = boxTitle.toLowerCase().includes('editorial note');
+
+      const cardBg = isFinancials ? (isTakeaway ? 'bg-[#D6D0C7]' : isEditorialNote ? 'bg-[#E1DDD6]' : 'bg-[#D8D3CB]') : (isDark ? 'bg-white/5' : 'bg-black/5');
+      const cardBorder = isFinancials ? (isTakeaway ? 'border-[#7A1F1F]' : isEditorialNote ? 'border-[#C7BFB5]' : 'border-[#C7BFB5]') : (isDark ? 'border-white/5' : 'border-black/5');
+      const cardHeadingColor = isFinancials ? 'text-[#7A1F1F]' : 'text-gold';
+      const cardTextColor = isFinancials ? (isTakeaway ? 'text-[#2F2B27]' : isEditorialNote ? 'text-[#5A554F]' : 'text-[#33302C]') : (isDark ? 'text-white' : 'text-black');
+
       return (
-        <div className={`p-8 ${isDark ? 'bg-white/5 border-white/5' : 'bg-black/5 border-black/5'} border hover:border-gold/30 transition-all duration-700 rounded-sm group h-full flex flex-col`}>
-          <h4 className="text-gold tracking-[0.3em] uppercase text-[10px] mb-4 font-bold">{boxTitle}</h4>
-          <p className={`text-sm md:text-base leading-relaxed opacity-70 group-hover:opacity-100 transition-opacity ${isDark ? 'text-white' : 'text-black'}`}>
-            {parseBold(boxBody)}
-          </p>
+        <div className={`p-8 ${cardBg} ${cardBorder} border hover:border-gold/30 transition-all duration-700 rounded-sm group h-full flex flex-col shadow-sm`}>
+          <h4 className={`${cardHeadingColor} tracking-[0.3em] uppercase text-[10px] mb-4 font-bold`}>{boxTitle}</h4>
+          <div className={`text-sm md:text-base leading-relaxed opacity-80 group-hover:opacity-100 transition-opacity ${cardTextColor}`}>
+            {boxBody.split(' | ').map((line, i) => (
+              <div key={i} className="flex gap-3 mb-2 items-start">
+                {boxBody.includes(' | ') && <span className={`${isFinancials ? 'text-[#7A1F1F]' : 'text-gold'} mt-1`}>•</span>}
+                <span className="flex-1">{parseBold(line)}</span>
+              </div>
+            ))}
+          </div>
         </div>
       );
     }
 
     // Regular paragraph
     return (
-      <p className={`text-base md:text-lg font-light leading-[1.8] ${
-        isDark ? 'text-white/70' : 'text-black/70'
-      } ${isCentered ? 'text-center' : 'text-left'}`}>
+      <p className={`text-base md:text-lg font-light leading-[1.8] ${isCentered ? 'text-center' : 'text-left'} ${
+        isFinancials ? 'text-[#33302C]' : (isDark ? 'text-white/70' : 'text-black/70')
+      }`}>
         {parseBold(text)}
       </p>
     );
@@ -145,7 +162,9 @@ const MagazineSection: React.FC<MagazineSectionProps> = ({
     const parts = text.split(/(\*\*.*?\*\*)/g);
     return parts.map((part, i) => {
       if (part.startsWith('**') && part.endsWith('**')) {
-        return <strong key={i} className={`font-bold ${isDark ? 'text-white/90' : 'text-black/90'}`}>{part.slice(2, -2)}</strong>;
+        return <strong key={i} className={`font-bold ${
+          isFinancials ? 'text-[#1F1F1F]' : (isDark ? 'text-white/90' : 'text-black/90')
+        }`}>{part.slice(2, -2)}</strong>;
       }
       return part;
     });
@@ -155,7 +174,7 @@ const MagazineSection: React.FC<MagazineSectionProps> = ({
     <section 
       id={id} 
       className={`w-full flex flex-col items-center my-32 md:my-40 transition-colors duration-1000 ${
-        isDark ? 'bg-black text-white' : 'bg-[#F5F1E8] text-[#111111]'
+        isFinancials ? 'bg-[#E7E3DD] text-[#33302C]' : (isDark ? 'bg-black text-white' : 'bg-[#F5F1E8] text-[#111111]')
       } ${verticalSpacing}`}
     >
       <div className={`w-full px-8 ${isCentered ? 'text-center' : ''} ${
@@ -173,16 +192,22 @@ const MagazineSection: React.FC<MagazineSectionProps> = ({
           className={`mb-12 md:mb-16 ${isFinancials ? 'px-8 md:px-24' : ''}`}
         >
           <div className={`flex items-center gap-4 mb-6 ${isCentered ? 'justify-center' : ''}`}>
-            <span className="text-gold font-serif italic text-lg opacity-60 tracking-widest">{number}</span>
-            <div className="h-[1px] w-8 bg-gold/30" />
-            <span className={`text-[10px] tracking-[0.4em] uppercase font-sans ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
+            <span className={`${isFinancials ? 'text-[#7A1F1F]' : 'text-gold'} font-serif italic text-lg opacity-60 tracking-widest`}>{number}</span>
+            <div className={`h-[1px] w-8 ${isFinancials ? 'bg-[#7A1F1F]/30' : 'bg-gold/30'}`} />
+            <span className={`text-[10px] tracking-[0.4em] uppercase font-sans ${
+              isFinancials ? 'text-[#5A554F]' : (isDark ? 'text-gray-400' : 'text-gray-500')
+            }`}>
               {subtitle || 'Editorial'}
             </span>
           </div>
-          <h2 className={`${fontClass} ${['pulse', 'the-direction', 'the-chair-financials', 'technology-consultation-shift'].includes(id) ? 'text-2xl md:text-4xl lg:text-5xl' : 'text-3xl md:text-5xl lg:text-6xl'} leading-[1.1] mb-8 normal-case tracking-tight whitespace-pre-line`}>
+          <h2 className={`${fontClass} ${['pulse', 'the-direction', 'the-chair-financials', 'technology-consultation-shift'].includes(id) ? 'text-2xl md:text-4xl lg:text-5xl' : 'text-3xl md:text-5xl lg:text-6xl'} leading-[1.1] mb-8 normal-case tracking-tight whitespace-pre-line ${
+            isFinancials ? 'text-[#1F1F1F]' : ''
+          }`}>
             {title.includes('\n') ? (
               <>
-                <span className="block text-[10px] md:text-xs tracking-[0.5em] uppercase text-gold/60 mb-4 font-sans font-bold">{title.split('\n')[0]}</span>
+                <span className={`block text-[10px] md:text-xs tracking-[0.5em] uppercase mb-4 font-sans font-bold ${
+                  isFinancials ? 'text-[#7A1F1F]' : 'text-gold/60'
+                }`}>{title.split('\n')[0]}</span>
                 <span className="block">{title.split('\n')[1]}</span>
               </>
             ) : title}
@@ -204,7 +229,7 @@ const MagazineSection: React.FC<MagazineSectionProps> = ({
               <img 
                 src={imagePath} 
                 alt={title}
-                className={`w-full h-auto block transition-transform duration-[1.2s] ease-out hover:scale-[1.03] ${isCinematic ? 'shadow-none' : 'shadow-2xl'} ${isFinancials ? 'h-full object-cover' : ''}`}
+                className={`w-full h-auto block transition-transform duration-[1.2s] ease-out hover:scale-[1.03] ${isCinematic ? 'shadow-none' : 'shadow-2xl'} ${isFinancials ? 'h-full object-cover object-top' : ''}`}
                 style={{ margin: '0 auto' }}
               />
             </motion.div>
@@ -231,10 +256,14 @@ const MagazineSection: React.FC<MagazineSectionProps> = ({
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.3, duration: 1 }}
-                className={`mt-16 pt-16 border-t border-gold/20 ${isCentered ? 'text-center' : ''}`}
+                className={`mt-16 pt-16 border-t ${isCentered ? 'text-center' : ''} ${
+                  isFinancials ? 'border-[#7A1F1F]/10' : 'border-gold/20'
+                }`}
               >
-                <blockquote className="font-serif italic text-3xl md:text-4xl text-gold leading-tight tracking-tight">
-                  "{pullQuote}"
+                <blockquote className={`font-serif italic text-3xl md:text-4xl leading-tight tracking-tight ${
+                  isFinancials ? 'text-[#2A2723]' : 'text-gold'
+                }`}>
+                  <span className={`${isFinancials ? 'text-[#7A1F1F]' : ''}`}>"</span>{pullQuote}<span className={`${isFinancials ? 'text-[#7A1F1F]' : ''}`}>"</span>
                 </blockquote>
               </motion.div>
             )}
@@ -248,7 +277,7 @@ const MagazineSection: React.FC<MagazineSectionProps> = ({
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 1.2, delay: 0.4 }}
-            className={`mt-24 md:mt-32 pt-24 md:pt-32 ${id === 'feature-segment' ? 'bg-white/5 border border-white/5 p-12 md:p-24 rounded-sm' : 'border-t border-gold/10'} w-full max-w-[1400px] mx-auto`}
+            className={`mt-24 md:mt-32 pt-24 md:pt-32 ${id === 'feature-segment' ? 'bg-white/5 border border-white/5 p-12 md:p-24 rounded-sm' : (isFinancials ? 'border-t border-[#7A1F1F]/10' : 'border-t border-gold/10')} w-full max-w-[1400px] mx-auto`}
           >
             {/* Render the subheader first if it's the start of this section */}
             {content.findIndex(p => p.startsWith('### ')) !== -1 && (

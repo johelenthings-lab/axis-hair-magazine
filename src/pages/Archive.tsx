@@ -31,7 +31,7 @@ const Archive: React.FC = () => {
 
   const issues: Issue[] = [
     { id: '1', title: 'The Quiet Edge', volume: '01', month: 'April', year: '2026', shipped: true, image: issue01 },
-    { id: '2', title: 'The Ledger', volume: '02', month: 'May', year: '2026', shipped: false, image: issue02 },
+    { id: '2', title: 'Financials / Ownership', volume: '02', month: 'May', year: '2026', shipped: true, image: issue02 },
     { id: '3', title: 'The Global Line', volume: '03', month: 'June', year: '2026', shipped: false, image: issue03 },
     { id: '4', title: 'The Block', volume: '04', month: 'July', year: '2026', shipped: false, image: issue04 },
     { id: '5', title: 'Instrument', volume: '05', month: 'August', year: '2026', shipped: false, image: issue05 },
