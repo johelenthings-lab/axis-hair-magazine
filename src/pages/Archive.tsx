@@ -45,8 +45,8 @@ const Archive: React.FC = () => {
   ];
 
   const handleLockedClick = () => {
-    setAlertMessage("This issue has not shipped yet.");
-    setTimeout(() => setAlertMessage(null), 3000);
+    setAlertMessage("This issue is coming soon.\nCheck back as new AXIS HAIR™ Magazine issues are released.");
+    setTimeout(() => setAlertMessage(null), 3500);
   };
 
   return (
@@ -88,14 +88,17 @@ const Archive: React.FC = () => {
                 zIndex: 100,
                 backgroundColor: '#111111',
                 color: 'white',
-                padding: '1rem 2rem',
-                borderRadius: '9999px',
-                fontSize: '10px',
-                letterSpacing: '0.3em',
+                padding: '1.25rem 2.5rem',
+                borderRadius: '12px',
+                fontSize: '11px',
+                letterSpacing: '0.25em',
                 textTransform: 'uppercase',
                 fontWeight: 500,
-                boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
-                border: '1px solid rgba(212, 175, 55, 0.2)'
+                boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.4)',
+                border: '1px solid rgba(212, 175, 55, 0.3)',
+                whiteSpace: 'pre-line',
+                textAlign: 'center',
+                lineHeight: '1.6'
               }}
             >
               {alertMessage}
@@ -255,7 +258,7 @@ const Archive: React.FC = () => {
                             fontWeight: 700,
                             whiteSpace: 'nowrap',
                           }}>
-                            Embrace IT
+                            Embrace IT™
                           </span>
                         </div>
                         <div style={{
@@ -554,6 +557,30 @@ const Archive: React.FC = () => {
                         transition: 'all 700ms',
                       }}
                     />
+                    {/* Decorative Label for Issue 03 */}
+                    {issue.id === '3' && (
+                      <div style={{
+                        position: 'absolute',
+                        bottom: '0',
+                        left: '0',
+                        right: '0',
+                        backgroundColor: '#000000',
+                        padding: '1.5rem 1rem',
+                        textAlign: 'center',
+                        zIndex: 5
+                      }}>
+                        <span style={{ 
+                          fontSize: '18px', 
+                          letterSpacing: '0.4em', 
+                          textTransform: 'uppercase', 
+                          color: '#FFFFFF',
+                          fontWeight: 700,
+                          fontFamily: "'Playfair Display', serif"
+                        }}>
+                          The Global Line
+                        </span>
+                      </div>
+                    )}
                     {/* Localized Editorial Metadata for Issue 11 */}
                     {issue.id === '11' && (
                       <div style={{
@@ -672,7 +699,7 @@ const Archive: React.FC = () => {
                             fontWeight: 500,
                             whiteSpace: 'nowrap',
                           }}>
-                            Embrace IT
+                            Embrace IT™
                           </span>
                         </div>
                         <div style={{

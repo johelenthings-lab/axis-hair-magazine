@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import CoverHero from '../components/magazine/CoverHero';
 import MagazineSection from '../components/magazine/MagazineSection';
@@ -273,6 +274,7 @@ const IssueTemplate: React.FC = () => {
   ];
 
   const [isNavOpen, setIsNavOpen] = useState(false);
+  const navigate = useNavigate();
 
   const jumpToSection = (sectionId: string) => {
     if (!sectionId) return;
@@ -284,7 +286,14 @@ const IssueTemplate: React.FC = () => {
   };
 
   const handleSectionJump = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    jumpToSection(e.target.value);
+    const value = e.target.value;
+    if (value === 'latest') {
+      navigate('/');
+    } else if (value === 'archive') {
+      navigate('/archive');
+    } else {
+      jumpToSection(value);
+    }
     // Reset selection for repeat use
     e.target.value = "";
   };
@@ -320,6 +329,8 @@ const IssueTemplate: React.FC = () => {
               defaultValue=""
             >
               <option value="" disabled>Select a direction</option>
+              <option value="latest" className="text-black bg-[#F5F1E8] font-sans text-sm uppercase tracking-widest py-2">Latest Issue</option>
+              <option value="archive" className="text-black bg-[#F5F1E8] font-sans text-sm uppercase tracking-widest py-2">Archive</option>
               <option value="top" className="text-black bg-[#F5F1E8] font-sans text-sm uppercase tracking-widest py-2">Top of Issue</option>
               {sections.map((s) => (
                 <option key={s.id} value={s.id} className="text-black bg-[#F5F1E8] font-sans text-sm uppercase tracking-widest py-2">
@@ -375,9 +386,24 @@ const IssueTemplate: React.FC = () => {
             >
               <div className="flex flex-col gap-5">
                 <div className="flex justify-between items-center mb-2">
-                  <p className="text-[10px] tracking-[0.5em] uppercase opacity-40 font-sans">Issue Sections</p>
+                  <p className="text-[10px] tracking-[0.5em] uppercase opacity-40 font-sans">Navigation & Sections</p>
                   <button onClick={() => setIsNavOpen(false)} className="text-[10px] uppercase opacity-20 hover:opacity-100 transition-opacity">Close</button>
                 </div>
+                <button
+                  onClick={() => { navigate('/'); setIsNavOpen(false); }}
+                  className="text-left text-[10px] uppercase tracking-[0.3em] hover:text-gold transition-colors py-1 flex items-center group/item"
+                >
+                  <span className="w-0 group-hover/item:w-4 h-[1px] bg-gold transition-all duration-500 overflow-hidden inline-block" />
+                  <span className="group-hover/item:translate-x-2 transition-transform duration-500 font-bold">Latest Issue</span>
+                </button>
+                <button
+                  onClick={() => { navigate('/archive'); setIsNavOpen(false); }}
+                  className="text-left text-[10px] uppercase tracking-[0.3em] hover:text-gold transition-colors py-1 flex items-center group/item"
+                >
+                  <span className="w-0 group-hover/item:w-4 h-[1px] bg-gold transition-all duration-500 overflow-hidden inline-block" />
+                  <span className="group-hover/item:translate-x-2 transition-transform duration-500 font-bold">Archive</span>
+                </button>
+                <div className="h-[1px] w-full bg-black/5 my-1" />
                 <button
                   onClick={() => jumpToSection('top')}
                   className="text-left text-[10px] uppercase tracking-[0.3em] hover:text-gold transition-colors py-1 flex items-center group/item"
