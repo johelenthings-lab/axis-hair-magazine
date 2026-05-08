@@ -3,6 +3,7 @@ import Header from './components/layout/Header';
 import Home from './pages/Home';
 import AprilIssue from './pages/AprilIssue';
 import MayIssue from './pages/MayIssue';
+import JuneIssue from './pages/JuneIssue';
 import Archive from './pages/Archive';
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/issue/1" element={<AprilIssue />} />
           <Route path="/issue/2" element={<MayIssue />} />
+          <Route path="/issue/3" element={<JuneIssue />} />
           <Route path="/archive" element={<Archive />} />
         </Routes>
       </div>

@@ -13,11 +13,14 @@ interface MagazineSectionProps {
   layout?: 'left' | 'right' | 'center' | 'full';
   layoutVariant?: 'cinematic' | 'staggered' | 'grid' | 'education' | 'default';
   fontOption?: 1 | 2 | 3;
+  bgColor?: string;
+  textColor?: string;
+  accentColor?: string;
 }
 
 const MagazineSection: React.FC<MagazineSectionProps> = ({ 
   id, title, subtitle, content, pullQuote, imagePath, number, theme = 'dark', layout = 'left',
-  layoutVariant = 'default', fontOption = 1
+  layoutVariant = 'default', fontOption = 1, bgColor, textColor, accentColor
 }) => {
   const isDark = theme === 'dark';
   const isFounderNote = id === 'founders-note';
@@ -38,8 +41,8 @@ const MagazineSection: React.FC<MagazineSectionProps> = ({
     if (text.startsWith('### ')) {
       return (
         <h3 className={`text-xl md:text-2xl font-bold tracking-[0.2em] uppercase mt-16 mb-8 border-b pb-4 ${isCentered ? 'text-center' : 'text-left'} ${
-          isFinancials ? 'text-[#7A1F1F] border-[#7A1F1F]/20' : 'text-gold border-gold/10'
-        }`}>
+          accentColor ? '' : (isFinancials ? 'text-[#7A1F1F] border-[#7A1F1F]/20' : 'text-gold border-gold/10')
+        }`} style={{ color: accentColor, borderColor: accentColor ? `${accentColor}33` : undefined }}>
           {text.replace('### ', '')}
         </h3>
       );
@@ -49,7 +52,7 @@ const MagazineSection: React.FC<MagazineSectionProps> = ({
     if (text.startsWith('- ')) {
       return (
         <div className={`flex gap-4 mb-4 items-start group ${isCentered ? 'justify-center' : ''}`}>
-          <span className={`${isFinancials ? 'text-[#7A1F1F]' : 'text-gold'} mt-1.5`}>•</span>
+          <span className={`${accentColor ? '' : (isFinancials ? 'text-[#7A1F1F]' : 'text-gold')} mt-1.5`} style={{ color: accentColor }}>•</span>
           <span className={`flex-1 ${isCentered ? 'text-center' : 'text-left'}`}>
             {parseBold(text.replace('- ', ''))}
           </span>
@@ -128,18 +131,21 @@ const MagazineSection: React.FC<MagazineSectionProps> = ({
       const isTakeaway = boxTitle.toLowerCase().includes('this week');
       const isEditorialNote = boxTitle.toLowerCase().includes('editorial note');
 
-      const cardBg = isFinancials ? (isTakeaway ? 'bg-[#D6D0C7]' : isEditorialNote ? 'bg-[#E1DDD6]' : 'bg-[#D8D3CB]') : (isDark ? 'bg-white/5' : 'bg-black/5');
-      const cardBorder = isFinancials ? (isTakeaway ? 'border-[#7A1F1F]' : isEditorialNote ? 'border-[#C7BFB5]' : 'border-[#C7BFB5]') : (isDark ? 'border-white/5' : 'border-black/5');
-      const cardHeadingColor = isFinancials ? 'text-[#7A1F1F]' : 'text-gold';
-      const cardTextColor = isFinancials ? (isTakeaway ? 'text-[#2F2B27]' : isEditorialNote ? 'text-[#5A554F]' : 'text-[#33302C]') : (isDark ? 'text-white' : 'text-black');
+      const cardBg = bgColor ? 'bg-white/5' : (isFinancials ? (isTakeaway ? 'bg-[#D6D0C7]' : isEditorialNote ? 'bg-[#E1DDD6]' : 'bg-[#D8D3CB]') : (isDark ? 'bg-white/5' : 'bg-black/5'));
+      const cardBorder = bgColor ? 'border-white/10' : (isFinancials ? (isTakeaway ? 'border-[#7A1F1F]' : isEditorialNote ? 'border-[#C7BFB5]' : 'border-[#C7BFB5]') : (isDark ? 'border-white/5' : 'border-black/5'));
+      const cardHeadingColor = accentColor ? '' : (isFinancials ? 'text-[#7A1F1F]' : 'text-gold');
+      const cardTextColor = textColor ? '' : (isFinancials ? (isTakeaway ? 'text-[#2F2B27]' : isEditorialNote ? 'text-[#5A554F]' : 'text-[#33302C]') : (isDark ? 'text-white' : 'text-black'));
 
       return (
-        <div className={`p-8 ${cardBg} ${cardBorder} border hover:border-gold/30 transition-all duration-700 rounded-sm group h-full flex flex-col shadow-sm`}>
-          <h4 className={`${cardHeadingColor} tracking-[0.3em] uppercase text-[10px] mb-4 font-bold`}>{boxTitle}</h4>
-          <div className={`text-sm md:text-base leading-relaxed opacity-80 group-hover:opacity-100 transition-opacity ${cardTextColor}`}>
+        <div 
+          className={`p-8 ${cardBg} ${cardBorder} border hover:border-gold/30 transition-all duration-700 rounded-sm group h-full flex flex-col shadow-sm`}
+          style={{ backgroundColor: bgColor ? `${bgColor}11` : undefined, borderColor: accentColor ? `${accentColor}33` : undefined }}
+        >
+          <h4 className={`${cardHeadingColor} tracking-[0.3em] uppercase text-[10px] mb-4 font-bold`} style={{ color: accentColor }}>{boxTitle}</h4>
+          <div className={`text-sm md:text-base leading-relaxed opacity-80 group-hover:opacity-100 transition-opacity ${cardTextColor}`} style={{ color: textColor }}>
             {boxBody.split(' | ').map((line, i) => (
               <div key={i} className="flex gap-3 mb-2 items-start">
-                {boxBody.includes(' | ') && <span className={`${isFinancials ? 'text-[#7A1F1F]' : 'text-gold'} mt-1`}>•</span>}
+                {boxBody.includes(' | ') && <span className={`${accentColor ? '' : (isFinancials ? 'text-[#7A1F1F]' : 'text-gold')} mt-1`} style={{ color: accentColor }}>•</span>}
                 <span className="flex-1">{parseBold(line)}</span>
               </div>
             ))}
@@ -151,8 +157,8 @@ const MagazineSection: React.FC<MagazineSectionProps> = ({
     // Regular paragraph
     return (
       <p className={`text-base md:text-lg font-light leading-[1.8] ${isCentered ? 'text-center' : 'text-left'} ${
-        isFinancials ? 'text-[#33302C]' : (isDark ? 'text-white/70' : 'text-black/70')
-      }`}>
+        textColor ? '' : (isFinancials ? 'text-[#33302C]' : (isDark ? 'text-white/70' : 'text-black/70'))
+      }`} style={{ color: textColor }}>
         {parseBold(text)}
       </p>
     );
@@ -174,8 +180,9 @@ const MagazineSection: React.FC<MagazineSectionProps> = ({
     <section 
       id={id} 
       className={`w-full flex flex-col items-center my-32 md:my-40 transition-colors duration-1000 ${
-        isFinancials ? 'bg-[#E7E3DD] text-[#33302C]' : (isDark ? 'bg-black text-white' : 'bg-[#F5F1E8] text-[#111111]')
+        bgColor ? '' : (isFinancials ? 'bg-[#E7E3DD] text-[#33302C]' : (isDark ? 'bg-black text-white' : 'bg-[#F5F1E8] text-[#111111]'))
       } ${verticalSpacing}`}
+      style={{ backgroundColor: bgColor, color: textColor }}
     >
       <div className={`w-full px-8 ${isCentered ? 'text-center' : ''} ${
         isFounderNote ? 'max-w-[800px] mx-auto' : 
@@ -192,22 +199,22 @@ const MagazineSection: React.FC<MagazineSectionProps> = ({
           className={`mb-12 md:mb-16 ${isFinancials ? 'px-8 md:px-24' : ''}`}
         >
           <div className={`flex items-center gap-4 mb-6 ${isCentered ? 'justify-center' : ''}`}>
-            <span className={`${isFinancials ? 'text-[#7A1F1F]' : 'text-gold'} font-serif italic text-lg opacity-60 tracking-widest`}>{number}</span>
-            <div className={`h-[1px] w-8 ${isFinancials ? 'bg-[#7A1F1F]/30' : 'bg-gold/30'}`} />
+            <span className={`${accentColor ? '' : (isFinancials ? 'text-[#7A1F1F]' : 'text-gold')} font-serif italic text-lg opacity-60 tracking-widest`} style={{ color: accentColor }}>{number}</span>
+            <div className={`h-[1px] w-8 ${accentColor ? '' : (isFinancials ? 'bg-[#7A1F1F]/30' : 'bg-gold/30')}`} style={{ backgroundColor: accentColor ? `${accentColor}4D` : undefined }} />
             <span className={`text-[10px] tracking-[0.4em] uppercase font-sans ${
-              isFinancials ? 'text-[#5A554F]' : (isDark ? 'text-gray-400' : 'text-gray-500')
-            }`}>
+              textColor ? '' : (isFinancials ? 'text-[#5A554F]' : (isDark ? 'text-gray-400' : 'text-gray-500'))
+            }`} style={{ color: textColor }}>
               {subtitle || 'Editorial'}
             </span>
           </div>
           <h2 className={`${fontClass} ${['pulse', 'the-direction', 'the-chair-financials', 'technology-consultation-shift'].includes(id) ? 'text-2xl md:text-4xl lg:text-5xl' : 'text-3xl md:text-5xl lg:text-6xl'} leading-[1.1] mb-8 normal-case tracking-tight whitespace-pre-line ${
-            isFinancials ? 'text-[#1F1F1F]' : ''
-          }`}>
+            accentColor ? '' : (isFinancials ? 'text-[#1F1F1F]' : '')
+          }`} style={{ color: textColor || (accentColor ? '#FFFFFF' : undefined) }}>
             {title.includes('\n') ? (
               <>
                 <span className={`block text-[10px] md:text-xs tracking-[0.5em] uppercase mb-4 font-sans font-bold ${
-                  isFinancials ? 'text-[#7A1F1F]' : 'text-gold/60'
-                }`}>{title.split('\n')[0]}</span>
+                  accentColor ? '' : (isFinancials ? 'text-[#7A1F1F]' : 'text-gold/60')
+                }`} style={{ color: accentColor }}>{title.split('\n')[0]}</span>
                 <span className="block">{title.split('\n')[1]}</span>
               </>
             ) : title}
@@ -261,9 +268,9 @@ const MagazineSection: React.FC<MagazineSectionProps> = ({
                 }`}
               >
                 <blockquote className={`font-serif italic text-3xl md:text-4xl leading-tight tracking-tight ${
-                  isFinancials ? 'text-[#2A2723]' : 'text-gold'
-                }`}>
-                  <span className={`${isFinancials ? 'text-[#7A1F1F]' : ''}`}>"</span>{pullQuote}<span className={`${isFinancials ? 'text-[#7A1F1F]' : ''}`}>"</span>
+                  accentColor ? '' : (isFinancials ? 'text-[#2A2723]' : 'text-gold')
+                }`} style={{ color: accentColor }}>
+                  <span className={`${accentColor ? '' : (isFinancials ? 'text-[#7A1F1F]' : '')}`} style={{ color: accentColor }}>"</span>{pullQuote}<span className={`${accentColor ? '' : (isFinancials ? 'text-[#7A1F1F]' : '')}`} style={{ color: accentColor }}>"</span>
                 </blockquote>
               </motion.div>
             )}
