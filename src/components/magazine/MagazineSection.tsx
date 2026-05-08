@@ -8,6 +8,10 @@ interface MagazineSectionProps {
   content: string[];
   pullQuote?: string;
   imagePath?: string;
+  imageAlt?: string;
+  imageFit?: 'cover' | 'contain' | 'auto';
+  imageClassName?: string;
+  titleClassName?: string;
   number: string;
   theme?: 'light' | 'dark';
   layout?: 'left' | 'right' | 'center' | 'full';
@@ -19,7 +23,7 @@ interface MagazineSectionProps {
 }
 
 const MagazineSection: React.FC<MagazineSectionProps> = ({ 
-  id, title, subtitle, content, pullQuote, imagePath, number, theme = 'dark', layout = 'left',
+  id, title, subtitle, content, pullQuote, imagePath, imageAlt, imageFit, imageClassName, titleClassName, number, theme = 'dark', layout = 'left',
   layoutVariant = 'default', fontOption = 1, bgColor, textColor, accentColor
 }) => {
   const isDark = theme === 'dark';
@@ -209,7 +213,7 @@ const MagazineSection: React.FC<MagazineSectionProps> = ({
           </div>
           <h2 className={`${fontClass} ${['pulse', 'the-direction', 'the-chair-financials', 'technology-consultation-shift'].includes(id) ? 'text-2xl md:text-4xl lg:text-5xl' : 'text-3xl md:text-5xl lg:text-6xl'} leading-[1.1] mb-8 normal-case tracking-tight whitespace-pre-line ${
             accentColor ? '' : (isFinancials ? 'text-[#1F1F1F]' : '')
-          }`} style={{ color: textColor || (accentColor ? '#FFFFFF' : undefined) }}>
+          } ${titleClassName || ''}`} style={{ color: textColor || (accentColor ? '#FFFFFF' : undefined) }}>
             {title.includes('\n') ? (
               <>
                 <span className={`block text-[10px] md:text-xs tracking-[0.5em] uppercase mb-4 font-sans font-bold ${
@@ -235,8 +239,8 @@ const MagazineSection: React.FC<MagazineSectionProps> = ({
             >
               <img 
                 src={imagePath} 
-                alt={title}
-                className={`w-full h-auto block transition-transform duration-[1.2s] ease-out hover:scale-[1.03] ${isCinematic ? 'shadow-none' : 'shadow-2xl'} ${isFinancials ? 'h-full object-cover object-top' : ''}`}
+                alt={imageAlt || title}
+                className={`w-full ${imageFit === 'contain' ? 'h-full object-contain' : 'h-auto'} block transition-transform duration-[1.2s] ease-out hover:scale-[1.03] ${isCinematic ? 'shadow-none' : 'shadow-2xl'} ${isFinancials && !imageFit ? 'h-full object-cover object-top' : ''} ${imageClassName || ''}`}
                 style={{ margin: '0 auto' }}
               />
             </motion.div>

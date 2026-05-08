@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import MagazineIssueMenu from '../components/magazine/MagazineIssueMenu';
 
 // Import all 12 covers
 import issue01 from '../assets/images/issue-01.png';
@@ -111,6 +112,7 @@ const Archive: React.FC = () => {
           {issues.map((issue, index) => (
             <motion.div
               key={issue.id}
+              id={`issue-card-${issue.id}`}
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -965,6 +967,7 @@ const Archive: React.FC = () => {
           ))}
         </div>
       </div>
+      <MagazineIssueMenu />
     </div>
   );
 };

@@ -6,6 +6,18 @@ import MagazineSection from '../components/magazine/MagazineSection';
 
 // June Issue Placeholder Assets
 import issue03 from "../assets/images/issue-03.png";
+import pulseImg from "../assets/images/june/june-pulse-global-influence.png";
+import skImg from "../assets/images/june/june-trend-south-korea.png";
+import africaImg from "../assets/images/june/june-trend-africa.png";
+import londonImg from "../assets/images/june/june-trend-london.png";
+import parisImg from "../assets/images/june/june-trend-paris.png";
+import brazilImg from "../assets/images/june/june-trend-brazil.png";
+import nyImg from "../assets/images/june/june-trend-new-york.png";
+import spotlightImg from "../assets/images/june/june-cultural-spotlight-seoul.png";
+import financialsImg from "../assets/images/june/june-financials-price-the-interpretation.png";
+import techImg from "../assets/images/june/june-technology-reference-to-plan.png";
+import featureImg from "../assets/images/june/june-feature-inspiration-to-interpretation.png";
+import directionImg from "../assets/images/june/june-direction-what-comes-next.png";
 
 const JuneIssue: React.FC = () => {
   const fontOption: 1 | 2 | 3 = 1;
@@ -56,7 +68,7 @@ const JuneIssue: React.FC = () => {
       number: '02',
       title: 'The Client’s Reference Point Has Changed',
       subtitle: 'THE PULSE',
-      imagePath: issue03,
+      imagePath: pulseImg,
       content: [
         'The client sitting in the chair is not only influenced by what they saw in their own neighborhood anymore.',
         'They are bringing in screenshots from Seoul, color ideas from Paris, barbering references from London, movement from Brazil, texture inspiration from across Africa, and editorial sharpness from New York. Sometimes they know exactly where the reference came from. Sometimes they only know how it made them feel.',
@@ -82,12 +94,12 @@ const JuneIssue: React.FC = () => {
         'It is sending many.',
         'Some are soft. Some are sharp. Some are polished. Some are loud with texture, movement, color, and confidence. June is about looking at those references with fresh eyes — not to copy everything, but to understand what clients are seeing, saving, and asking for next.',
         '### The Showcase',
-        `[TREND] ${issue03} | South Korea | **Look direction:** Soft polish, clean layers, glossy finish. South Korea is bringing detail to the front: airy layers, face-framing movement, root lift, soft bangs, and color that feels clean, healthy, and intentional. _Visual caption:_ Soft shape. Quiet gloss. Detail that does the work.`,
-        `[TREND] ${issue03} | Africa | **Look direction:** Texture, sculpture, protection, and precision. Across African beauty and grooming influence, texture leads the story. Braids, locs, natural shape, sculptural volume, protective styling, and sharp barbering all carry power, identity, and creativity. _Visual caption:_ Texture with presence. Shape with meaning.`,
-        `[TREND] ${issue03} | London | **Look direction:** Street edge, fashion cuts, and lived-in cool. London gives the board attitude: sharp crops, creative color, textured barbering, undone finish, and cuts that feel connected to music, fashion, and movement in the street. _Visual caption:_ A little rebellious. Still completely wearable.`,
-        `[TREND] ${issue03} | Paris | **Look direction:** Effortless polish and quiet shape. Paris keeps the mood refined: soft bobs, French fringe, clean lines, minimal styling, and that almost effortless finish that still looks considered. _Visual caption:_ Chic does not have to shout.`,
-        `[TREND] ${issue03} | Brazil | **Look direction:** Shine, volume, movement, and warmth. Brazil brings hair that feels alive: long movement, curls with confidence, rich color, gloss, body, and styling that moves from beach energy to city glamour without losing personality. _Visual caption:_ Warmth, body, shine, and motion.`,
-        `[TREND] ${issue03} | New York | **Look direction:** Editorial sharpness and personal remix. New York does not follow one lane. It remixes everything: sleek bobs, bold short cuts, precision barbering, statement color, natural texture, and looks that feel fast, individual, and camera-ready. _Visual caption:_ Sharp, personal, and impossible to ignore.`,
+        `[TREND] ${skImg} | South Korea | **Look direction:** Soft polish, clean layers, glossy finish. South Korea is bringing detail to the front: airy layers, face-framing movement, root lift, soft bangs, and color that feels clean, healthy, and intentional. _Visual caption:_ Soft shape. Quiet gloss. Detail that does the work.`,
+        `[TREND] ${africaImg} | Africa | **Look direction:** Texture, sculpture, protection, and precision. Across African beauty and grooming influence, texture leads the story. Braids, locs, natural shape, sculptural volume, protective styling, and sharp barbering all carry power, identity, and creativity. _Visual caption:_ Texture with presence. Shape with meaning.`,
+        `[TREND] ${londonImg} | London | **Look direction:** Street edge, fashion cuts, and lived-in cool. London gives the board attitude: sharp crops, creative color, textured barbering, undone finish, and cuts that feel connected to music, fashion, and movement in the street. _Visual caption:_ A little rebellious. Still completely wearable.`,
+        `[TREND] ${parisImg} | Paris | **Look direction:** Effortless polish and quiet shape. Paris keeps the mood refined: soft bobs, French fringe, clean lines, minimal styling, and that almost effortless finish that still looks considered. _Visual caption:_ Chic does not have to shout.`,
+        `[TREND] ${brazilImg} | Brazil | **Look direction:** Shine, volume, movement, and warmth. Brazil brings hair that feels alive: long movement, curls with confidence, rich color, gloss, body, and styling that moves from beach energy to city glamour without losing personality. _Visual caption:_ Warmth, body, shine, and motion.`,
+        `[TREND] ${nyImg} | New York | **Look direction:** Editorial sharpness and personal remix. New York does not follow one lane. It remixes everything: sleek bobs, bold short cuts, precision barbering, statement color, natural texture, and looks that feel fast, individual, and camera-ready. _Visual caption:_ Sharp, personal, and impossible to ignore.`,
         'The point is not to chase every trend.',
         'The point is to know what is moving — and understand how to translate it when it reaches your chair.'
       ],
@@ -101,7 +113,7 @@ const JuneIssue: React.FC = () => {
       number: '04',
       title: 'The Soft Power of Seoul Beauty',
       subtitle: 'CULTURAL SPOTLIGHT',
-      imagePath: issue03,
+      imagePath: spotlightImg,
       content: [
         'South Korea’s influence in beauty does not always arrive loudly.',
         'It often shows up in the details: the lift at the root, the softness around the face, the clean shape of a layered cut, the quiet shine of healthy color, and the way the finished look feels polished without feeling forced.',
@@ -126,7 +138,9 @@ const JuneIssue: React.FC = () => {
       number: '05',
       title: 'Building Beyond the Chair: Price the Interpretation',
       subtitle: 'THE CHAIR: FINANCIALS',
-      imagePath: issue03,
+      imagePath: financialsImg,
+      imageFit: 'contain' as const,
+      titleClassName: "lg:text-[2.65rem] lg:tracking-tighter uppercase",
       content: [
         'Global trends can bring excitement into the chair, but excitement alone does not pay for the time, skill, product, education, or decision-making behind the service.',
         'When a client brings a look inspired by Seoul, Paris, London, Brazil, Africa, or New York, the value is not in copying the image. The value is in interpretation. You are looking at the client’s texture, density, face shape, lifestyle, maintenance habits, budget, color history, and realistic service path. That is professional work.',
@@ -150,7 +164,7 @@ const JuneIssue: React.FC = () => {
       number: '06',
       title: 'From Reference Image to Real Plan',
       subtitle: 'TECHNOLOGY & CONSULTATION SHIFT',
-      imagePath: issue03,
+      imagePath: techImg,
       content: [
         'Global inspiration usually arrives visually first.',
         'A client may bring a saved post, a celebrity screenshot, a Seoul-inspired layered cut, a Paris fringe, a London crop, a Brazil-influenced color mood, or a New York editorial shape. The image creates excitement, but it can also create confusion if the professional does not slow the request down and translate it properly.',
@@ -171,7 +185,8 @@ const JuneIssue: React.FC = () => {
       number: '07',
       title: 'From Inspiration to Interpretation',
       subtitle: 'FEATURE SEGMENT',
-      imagePath: issue03,
+      imagePath: featureImg,
+      titleClassName: "lg:text-[3.25rem] lg:tracking-tight uppercase",
       content: [
         'The client does not always know the technical name for what they want.',
         'They may not know whether the reference is about shape, color, texture, finish, density, styling, or maintenance. They only know that something about the image caught their attention.',
@@ -200,7 +215,7 @@ const JuneIssue: React.FC = () => {
       number: '08',
       title: 'What Comes Next Is Interpretation',
       subtitle: 'THE DIRECTION',
-      imagePath: issue03,
+      imagePath: directionImg,
       content: [
         'The world will keep moving. References will keep traveling faster than clients can name them. A shape from one city, a color mood from another, a styling detail from somewhere else entirely — all of it will continue arriving in the chair through screens, conversations, saved posts, and expectations that did not exist a few years ago.',
         'That does not make the professional less important. It makes the professional more necessary. Because the future of this industry will not belong to the person who copies the fastest. It will belong to the person who can look at what is moving, understand where it came from, respect what it means, and decide what should actually happen next for the client in front of them.',
