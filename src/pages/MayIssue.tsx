@@ -12,7 +12,7 @@ import trendHeroBottomLeft from "../assets/images/may/trend-hero-bottom-left.jpg
 import trendHeroTopLeft from "../assets/images/may/trend-hero-top-left.jpg";
 import issue02 from "../assets/images/issue-02.png";
 import financialsImg from "../assets/images/may/may-04-financials.png";
-import techImg from "../assets/images/may/may-05-technology-shift.jpg";
+import techImg from "../assets/images/may/may-05-technology-shift.png";
 import transformationVisual from "../assets/images/may/Feature Segment-01-v2.png";
 import directionImg from "../assets/images/may/may-08-the-direction-v2.png";
 
