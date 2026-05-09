@@ -19,7 +19,10 @@ const MagazineIssueMenu: React.FC = () => {
     { id: '1', title: 'The Quiet Edge', month: 'April', year: '2026', shipped: true },
     { id: '2', title: 'Financials / Ownership', month: 'May', year: '2026', shipped: true },
     { id: '3', title: 'Global Trends', month: 'June', year: '2026', shipped: true },
-    { id: '4', title: 'The Block', month: 'July', year: '2026', shipped: false },
+    // July 2026 — Event Season / Wedding-Ready Work
+    // Theme line: “Your work has to last beyond the chair.”
+    // Editorial: Event-season styling/grooming (bridal, groom, party coordination, trial appointments, pricing, retention).
+    { id: '4', title: 'Event Season / Wedding-Ready Work', month: 'July', year: '2026', shipped: false },
     { id: '5', title: 'Instrument', month: 'August', year: '2026', shipped: false },
     { id: '6', title: 'The Intake', month: 'September', year: '2026', shipped: false },
     { id: '7', title: 'The Silhouette', month: 'October', year: '2026', shipped: false },
@@ -32,7 +35,7 @@ const MagazineIssueMenu: React.FC = () => {
   ];
 
   const handleIssueClick = (issue: IssueMenuItem) => {
-    if (issue.shipped) {
+    if (issue.shipped || (import.meta.env.DEV && issue.id === '4')) {
       navigate(`/issue/${issue.id}`);
       setIsOpen(false);
     } else {

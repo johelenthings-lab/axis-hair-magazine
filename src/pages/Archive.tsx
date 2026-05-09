@@ -7,7 +7,7 @@ import MagazineIssueMenu from '../components/magazine/MagazineIssueMenu';
 import issue01 from '../assets/images/issue-01.png';
 import issue02 from '../assets/images/issue-02.png';
 import issue03 from '../assets/images/issue-03.png';
-import issue04 from '../assets/images/issue-04.png';
+import issue04 from '../assets/images/july/july-cover-men-at-wedding.png';
 import issue05 from '../assets/images/issue-05.png';
 import issue06 from '../assets/images/issue-06.png';
 import issue07 from '../assets/images/issue-07.png';
@@ -34,7 +34,10 @@ const Archive: React.FC = () => {
     { id: '1', title: 'The Quiet Edge', volume: '01', month: 'April', year: '2026', shipped: true, image: issue01 },
     { id: '2', title: 'Financials / Ownership', volume: '02', month: 'May', year: '2026', shipped: true, image: issue02 },
     { id: '3', title: 'Global Trends', volume: '03', month: 'June', year: '2026', shipped: true, image: issue03 },
-    { id: '4', title: 'The Block', volume: '04', month: 'July', year: '2026', shipped: false, image: issue04 },
+    // July 2026 — Event Season / Wedding-Ready Work
+    // Theme line: “Your work has to last beyond the chair.”
+    // Editorial: Event-season styling/grooming (bridal, groom, party coordination, trial appointments, pricing, retention).
+    { id: '4', title: 'Event Season / Wedding-Ready Work', volume: '04', month: 'July', year: '2026', shipped: false, image: issue04 },
     { id: '5', title: 'Instrument', volume: '05', month: 'August', year: '2026', shipped: false, image: issue05 },
     { id: '6', title: 'The Intake', volume: '06', month: 'September', year: '2026', shipped: false, image: issue06 },
     { id: '7', title: 'The Silhouette', volume: '07', month: 'October', year: '2026', shipped: false, image: issue07 },
@@ -123,25 +126,99 @@ const Archive: React.FC = () => {
               <div 
                 className="cover-container shadow-sm"
                 style={{ 
-                  backgroundColor: issue.id === '3' ? '#ab8869' : '#E5E7EB' 
+                  backgroundColor: issue.id === '4' ? '#111111' : (issue.id === '3' ? '#ab8869' : '#E5E7EB') 
                 }}
               >
-                {issue.shipped ? (
+                {issue.shipped || (import.meta.env.DEV && issue.id === '4') ? (
                   <Link to={`/issue/${issue.id}`} style={{ display: 'block', height: '100%', width: '100%', position: 'relative' }}>
                     <img 
                       src={issue.image} 
                       alt={issue.title}
                       style={{ 
                         width: '100%', 
-                        height: issue.id === '8' ? '108%' : '100%', 
-                        top: issue.id === '8' ? '-4%' : '0',
+                        height: issue.id === '4' ? '95%' : (issue.id === '8' ? '108%' : '100%'), 
+                        top: issue.id === '4' ? '5%' : (issue.id === '8' ? '-4%' : '0'),
                         position: 'absolute',
                         objectFit: issue.id === '3' ? 'contain' : 'cover', 
-                        objectPosition: 'center',
+                        objectPosition: issue.id === '4' ? 'center 15%' : 'center',
                         transition: 'transform 2000ms cubic-bezier(0.22, 1, 0.36, 1)',
+                        zIndex: 10,
+                        maskImage: issue.id === '4' ? 'linear-gradient(to bottom, transparent 0%, black 5%)' : 'none',
+                        WebkitMaskImage: issue.id === '4' ? 'linear-gradient(to bottom, transparent 0%, black 5%)' : 'none'
                       }}
                       className="group-hover:opacity-90"
                     />
+                    {/* July 2026 — Premium Editorial Cover Overlay */}
+                    {issue.id === '4' && (
+                      <div style={{
+                        position: 'absolute',
+                        inset: 0,
+                        zIndex: 10,
+                        pointerEvents: 'none'
+                      }}>
+                        {/* Background Masthead (Behind Image Mask) */}
+                        <div style={{ 
+                          position: 'absolute',
+                          top: '0',
+                          left: '0',
+                          right: '0',
+                          textAlign: 'center', 
+                          opacity: 1,
+                          marginTop: '0.2rem',
+                          zIndex: 0
+                        }}>
+                          <span style={{ 
+                            fontSize: '5.2rem', 
+                            fontWeight: 900, 
+                            fontFamily: "'Playfair Display', serif", 
+                            color: 'white',
+                            letterSpacing: '-0.08em',
+                            textShadow: '0 4px 30px rgba(0,0,0,0.5)',
+                            lineHeight: 0.7,
+                            whiteSpace: 'nowrap'
+                          }}>AXIS HAIR</span>
+                        </div>
+
+                        {/* Bottom Metadata (Foreground) */}
+                        <div style={{ 
+                          position: 'absolute',
+                          bottom: '0',
+                          left: '0',
+                          right: '0',
+                          textAlign: 'center', 
+                          marginBottom: '0.75rem',
+                          zIndex: 20 
+                        }}>
+                          <p style={{ 
+                            fontSize: '7px', 
+                            letterSpacing: '0.6em', 
+                            color: 'rgba(255,255,255,0.9)', 
+                            textTransform: 'uppercase',
+                            marginBottom: '8px',
+                            fontWeight: 600
+                          }}>JULY 2026</p>
+                          <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
+                            <h4 style={{ 
+                              fontSize: '1.85rem', 
+                              fontFamily: "'Playfair Display', serif", 
+                              fontWeight: 700,
+                              color: 'white',
+                              lineHeight: 1,
+                              textTransform: 'uppercase',
+                              letterSpacing: '0.05em'
+                            }}>EVENT SEASON</h4>
+                            <p style={{
+                              fontSize: '8px',
+                              letterSpacing: '0.4em',
+                              color: 'white',
+                              textTransform: 'uppercase',
+                              opacity: 0.8,
+                              fontWeight: 500
+                            }}>WEDDING-READY WORK</p>
+                          </div>
+                        </div>
+                      </div>
+                    )}
                     {/* Localized Editorial Metadata for Issue 11 */}
                     {issue.id === '11' && (
                       <div style={{
@@ -551,12 +628,15 @@ const Archive: React.FC = () => {
                       alt={issue.title}
                       style={{ 
                         width: '100%', 
-                        height: issue.id === '8' ? '108%' : '100%', 
-                        top: issue.id === '8' ? '-4%' : '0',
+                        height: issue.id === '4' ? '95%' : (issue.id === '8' ? '108%' : '100%'), 
+                        top: issue.id === '4' ? '5%' : (issue.id === '8' ? '-4%' : '0'),
                         position: 'absolute',
                         objectFit: issue.id === '3' ? 'contain' : 'cover', 
-                        objectPosition: 'center',
+                        objectPosition: issue.id === '4' ? 'center 15%' : 'center',
                         transition: 'all 700ms',
+                        zIndex: 10,
+                        maskImage: issue.id === '4' ? 'linear-gradient(to bottom, transparent 0%, black 5%)' : 'none',
+                        WebkitMaskImage: issue.id === '4' ? 'linear-gradient(to bottom, transparent 0%, black 5%)' : 'none'
                       }}
                     />
                     {/* Decorative Label for Issue 03 */}

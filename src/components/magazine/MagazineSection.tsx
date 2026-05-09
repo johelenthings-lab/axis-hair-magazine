@@ -99,6 +99,7 @@ const MagazineSection: React.FC<MagazineSectionProps> = ({
       const trendImagePath = parts[0];
       const trendTitle = parts[1];
       const trendCaption = parts[2];
+      const trendPosition = parts[3] || 'object-center';
       return (
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
@@ -111,7 +112,7 @@ const MagazineSection: React.FC<MagazineSectionProps> = ({
             <img 
               src={trendImagePath} 
               alt={trendTitle}
-              className="w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-110"
+              className={`w-full h-full object-cover ${trendPosition} transition-transform duration-1000 ease-out group-hover:scale-110`}
               loading="lazy"
             />
           </div>
@@ -297,7 +298,7 @@ const MagazineSection: React.FC<MagazineSectionProps> = ({
               </div>
             )}
 
-            <div className={`grid gap-x-12 gap-y-8 ${id === 'feature-segment' ? 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3' : (layoutVariant === 'grid' ? 'grid-cols-1 md:grid-cols-3' : 'grid-cols-1')}`}>
+            <div className={`grid gap-x-12 gap-y-8 items-start ${id === 'feature-segment' ? 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3' : (layoutVariant === 'grid' ? 'grid-cols-1 md:grid-cols-3' : 'grid-cols-1')}`}>
               {content.slice(content.findIndex(p => p.startsWith('### ')) + 1).map((paragraph, index) => (
                 <React.Fragment key={index}>
                   {renderContent(paragraph)}
